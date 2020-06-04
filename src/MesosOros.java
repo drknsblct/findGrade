@@ -28,7 +28,7 @@ public class MesosOros {
                 list.clear();
             }
             if (answer == 4) {
-                System.out.println("Exiting program!");
+                System.out.println("Exiting program!\n");
                 break;
             }
         }
