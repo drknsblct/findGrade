@@ -55,12 +55,16 @@ public class MesosOros {
                 System.out.printf("Ma9hma[%d] - Ergasia[%d]\n", i + 1, j + 1);
                 System.out.print("Va9mos: ");
                 va9mos = scan.nextDouble();
+
+
                 if (va9mos == 0) {
                     System.out.println();
                     continue;
                 }
                 System.out.print("Pososto: ");
                 pososto = scan.nextInt();
+                System.out.println();
+
                 sum += edit(va9mos, pososto);
             }
             list.add(sum);
