@@ -6,9 +6,16 @@ public class MesosOros {
 
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
-
+        Scanner scan = new Scanner(System.in);
+    while (true) {
         courses(list);
         printArray(list);
+        System.out.println("Reset? (y/n)");
+        String answer = scan.nextLine();
+        if(!answer.equals("y")){
+            break;
+        }
+    }
 
 
     }
