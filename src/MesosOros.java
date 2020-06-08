@@ -6,12 +6,17 @@ public class MesosOros {
 
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
+        ArrayList<Double> averageList = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.println("1. Add Courses & Find Average Score || 2. View Average Score || 3. Reset List || 4. " +
-                    "Exit");
+                    "Find Average Score || 0. Exit");
             System.out.print("Choice: ");
             int answer = scan.nextInt();
+            if (answer == 0) {
+                System.out.println("Exiting program!\n");
+                break;
+            }
             if (answer == 1) {
                 courses(list);
                 printArray(list);
@@ -24,13 +29,18 @@ public class MesosOros {
                 printArray(list);
             }
             if (answer == 3) {
+                if (list.size() == 0) {
+                    System.out.println("The list is currently empty!\n");
+                    continue;
+                }
                 System.out.println("Emptied List!\n");
                 list.clear();
             }
             if (answer == 4) {
-                System.out.println("Exiting program!\n");
-                break;
+                findAverage(averageList);
+                averageList.clear();
             }
+
         }
     }
 
@@ -85,8 +95,26 @@ public class MesosOros {
         }
         System.out.printf("-->Mesos oros: %.2f<--\n\n", sum / list.size());
     }
+
+//dexetai thn telikh va9mologia ka9e ma9hmatos kai vriskei to teliko meso oro
+    public static void findAverage(ArrayList<Double> averageList) {
+        Scanner scan = new Scanner(System.in);
+        int i = 1;
+        while (true) {
+            System.out.printf("Enter number[%d]: ", i);
+            double num = scan.nextDouble();
+            if (num == 0) {
+                break;
+            }
+            averageList.add(num);
+            i++;
+        }
+        double sum = 0.0;
+        for (Double num : averageList) {
+            sum += num;
+        }
+        System.out.printf("-->Mesos oros: %.2f<--\n\n", sum / averageList.size());
+    }
 }
-
-
 
 
