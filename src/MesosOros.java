@@ -3,13 +3,12 @@ import java.util.Scanner;
 
 public class MesosOros {
 
-
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
         ArrayList<Double> averageList = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
         while (true) {
-            System.out.println("1. Add Courses & Find Average Score || 2. View Average Score || 3. Reset List || 4. " +
+            System.out.println("1. Add Courses || 2. View Average Score || 3. Reset List || 4. " +
                     "Find Average Score || 5. Delete Entries || 0. Exit");
             System.out.print("Choice: ");
             int answer = scan.nextInt();
@@ -18,12 +17,12 @@ public class MesosOros {
                 break;
             }
             if (answer == 1) {
-                System.out.println("<<<Add Courses & Find Average Score>>>");
+                System.out.println("<<< Add Courses >>>");
                 courses(list);
                 printArray(list);
             }
             if (answer == 2) {
-                System.out.println("<<<View Average Score>>>");
+                System.out.println("<<< View Average Score >>>");
                 if (list.size() == 0) {
                     System.out.println("The list is currently empty!\n");
                     continue;
@@ -31,7 +30,7 @@ public class MesosOros {
                 printArray(list);
             }
             if (answer == 3) {
-                System.out.println("<<<Reset list>>>");
+                System.out.println("<<< Reset List >>>");
                 if (list.size() == 0) {
                     System.out.println("The list is currently empty!\n");
                     continue;
@@ -40,12 +39,12 @@ public class MesosOros {
                 list.clear();
             }
             if (answer == 4) {
-                System.out.println("<<<Find Average Score>>>");
+                System.out.println("<<< Find Average Score >>>");
                 findAverage(averageList);
                 averageList.clear();
             }
             if (answer == 5) {
-                System.out.println("<<<Delete Entries>>>");
+                System.out.println("<<< Delete Entries >>>");
                 deleteItems(list);
             }
 
@@ -165,6 +164,9 @@ public class MesosOros {
             }
 
         }
+    }
+    public static void findFinalTest(){
+        
     }
 }
 
