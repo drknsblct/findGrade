@@ -261,29 +261,13 @@ public class MesosOros {
             editedMegalist.add(num / 6);
         }
 
-<<<<<<< HEAD
+
         double sum = 0.0;
         for (Double num : editedMegalist) {
             sum += num;
 
         }
         System.out.printf("Class average: %.2f\n\n", sum / editedMegalist.size());
-
-//        for (int i = 0; i < 7; i++) {
-//            if (names.get(editedMegalist.indexOf(Collections.max(editedMegalist))).equals("Spyros")) {
-//                System.out.printf("%d. %s: \t\t %.2f\n", i + 1,
-//                        names.get(editedMegalist.indexOf(Collections.max(editedMegalist))),
-//                        Collections.max(editedMegalist));
-//                names.remove(editedMegalist.indexOf(Collections.max(editedMegalist)));
-//                editedMegalist.remove(editedMegalist.indexOf(Collections.max(editedMegalist)));
-//            } else {
-//                System.out.printf("%d. %s: \t %.2f\n", i + 1,
-//                        names.get(editedMegalist.indexOf(Collections.max(editedMegalist))),
-//                        Collections.max(editedMegalist));
-//                names.remove(editedMegalist.indexOf(Collections.max(editedMegalist)));
-//                editedMegalist.remove(editedMegalist.indexOf(Collections.max(editedMegalist)));
-//            }
-//        }
 
         for (int i = 0; i < 7; i++) {
             System.out.printf("%d. %s: \t %.2f\n", i + 1,
@@ -295,8 +279,6 @@ public class MesosOros {
         }
         System.out.println();
     }
-=======
->>>>>>> d4bb663175b6446fcca991c398dd9f8d61b6fd3b
 }
 
 
