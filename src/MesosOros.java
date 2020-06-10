@@ -6,6 +6,7 @@ public class MesosOros {
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
         ArrayList<Double> averageList = new ArrayList<>();
+        ArrayList<String> coursesList = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.println("1. Add Courses || 2. View Average Score || 3. Reset List || 4. " +
@@ -18,25 +19,26 @@ public class MesosOros {
             }
             if (answer == 1) {
                 System.out.println("<<< Add Courses >>>");
-                courses(list);
-                printArray(list);
+                courses(list, coursesList);
+                printArray(list, coursesList);
             }
             if (answer == 2) {
                 System.out.println("<<< View Average Score >>>");
-                if (list.size() == 0) {
+                if (list.isEmpty()) {
                     System.out.println("The list is currently empty!\n");
                     continue;
                 }
-                printArray(list);
+                printArray(list, coursesList);
             }
             if (answer == 3) {
                 System.out.println("<<< Reset List >>>");
-                if (list.size() == 0) {
+                if (list.isEmpty()) {
                     System.out.println("The list is currently empty!\n");
                     continue;
                 }
                 System.out.println("Emptied list!\n");
                 list.clear();
+                coursesList.clear();
             }
             if (answer == 4) {
                 System.out.println("<<< Find Average Score >>>");
@@ -45,7 +47,7 @@ public class MesosOros {
             }
             if (answer == 5) {
                 System.out.println("<<< Delete Entries >>>");
-                deleteItems(list);
+                deleteItems(list, coursesList);
             }
 
         }
@@ -55,23 +57,31 @@ public class MesosOros {
         return va9mos * (pososto / 100);
     }
 
-    public static void courses(ArrayList<Double> list) {
+    public static void courses(ArrayList<Double> list, ArrayList<String> coursesList) {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter number of courses: ");
-        int courses = scan.nextInt();
+        int courses = Integer.parseInt(scan.nextLine());
         System.out.print("Enter number of CW: ");
-        int cw = scan.nextInt();
+        int cw = Integer.parseInt(scan.nextLine());
         System.out.println();
 
         for (int i = 0; i < courses; i++) {
             double va9mos;
             double pososto;
             double sum = 0.0;
-
+            System.out.print("Enter name of course: ");
+            String course = scan.nextLine();
+            if (course.equals("")) {
+                course = "Ma9hma";
+            }
             for (int j = 0; j < cw; j++) {
-                System.out.printf("Ma9hma[%d] - Ergasia[%d]\n", i + 1, j + 1);
+                if (course.equals("Ma9hma")) {
+                    System.out.printf("Ma9hma[%d] - Ergasia[%d]\n", i + 1, j + 1);
+                } else {
+                    System.out.printf("%s - Ergasia[%d]\n", course, j + 1);
+                }
                 System.out.print("Va9mos: ");
-                va9mos = scan.nextDouble();
+                va9mos = Double.parseDouble(scan.nextLine());
 
 
                 if (va9mos == 0) {
@@ -79,21 +89,21 @@ public class MesosOros {
                     continue;
                 }
                 System.out.print("Pososto: ");
-                pososto = scan.nextInt();
+                pososto = Integer.parseInt(scan.nextLine());
                 System.out.println();
 
                 sum += edit(va9mos, pososto);
             }
+            coursesList.add(course);
             list.add(sum);
         }
     }
 
-    public static void printArray(ArrayList<Double> list) {
+    public static void printArray(ArrayList<Double> list, ArrayList<String> coursesList) {
         double sum = 0.0;
         if (list.size() >= 2) {
             for (int i = 0; i < list.size(); i++) {
-                System.out.printf("Ma9hma[%d]: ", i + 1);
-                System.out.printf("%.2f\n", list.get(i));
+                System.out.printf("%d. %s: %.2f\n", i + 1, coursesList.get(i), list.get(i));
             }
         }
         for (Double num : list) {
@@ -108,7 +118,7 @@ public class MesosOros {
         Scanner scan = new Scanner(System.in);
         int i = 1;
         while (true) {
-            System.out.printf("Enter number[%d]: ", i);
+            System.out.printf("Enter score[%d]: ", i);
             double num = scan.nextDouble();
             if (num == 0) {
                 break;
@@ -123,50 +133,72 @@ public class MesosOros {
         System.out.printf("-->Mesos oros: %.2f<--\n\n", sum / averageList.size());
     }
 
-    public static void deleteItems(ArrayList <Double> list) {
+    public static void deleteItems(ArrayList<Double> list, ArrayList<String> coursesList) {
         Scanner scan = new Scanner(System.in);
         while (true) {
-            System.out.println("0. Exit || 1. Delete last || 2. Delete index || 3. Reset list");
+            if (list.isEmpty()){
+                System.out.println("The list is currently empty!\n");
+                break;
+            }
+            System.out.println("0. Exit || 1. Delete last || 2. Delete index || 3. Delete course || 4. Reset list");
             System.out.print("Choice: ");
-            int choice = scan.nextInt();
+            int choice = Integer.parseInt(scan.nextLine());
 
             if (choice == 0) {
                 break;
             }
             if (choice == 1) {
-                if (list.size() == 0){
-                    System.out.println("The list is currently empty!\n");
-                    break;
-                }
                 System.out.println("Deleted last entry\n");
-                list.remove(list.size()-1);
+                list.remove(list.size() - 1);
+                coursesList.remove(coursesList.size() - 1);
                 break;
             }
             if (choice == 2) {
                 System.out.print("Enter index to remove: ");
                 int index = scan.nextInt();
-                if (list.size()-1 < index){
+                if (list.size() - 1 < index) {
                     System.out.println("There's no such index!\n");
                     continue;
                 }
                 System.out.printf("Deleted index %d\n\n", index);
                 list.remove(index);
+                coursesList.remove(index);
+
                 break;
             }
             if (choice == 3) {
-                if (list.size() == 0){
-                    System.out.println("The list is currently empty!\n");
-                    break;
+                boolean found = false;
+                System.out.print("Enter course to remove: ");
+                String courseName = scan.nextLine();
+                for (int i = 0; i < coursesList.size(); i++) {
+                    if (courseName.equals(coursesList.get(i))) {
+                        System.out.println("Removed course: " + courseName);
+                        System.out.println();
+                        coursesList.remove(courseName);
+                        list.remove(i);
+                        found = true;
+                        break;
+                    }
                 }
+                if (!found) {
+                    System.out.println("There's no course with this name!\n");
+                }
+
+            }
+            if (choice == 4) {
                 System.out.println("Deleted list\n");
                 list.clear();
+                coursesList.clear();
                 break;
             }
 
         }
     }
-    public static void findFinalTest(){
-        
+
+    public static void findFinalTest() {}
+
+    public static void findOthersAverageScore(ArrayList<Double> megaList, ArrayList<Double> list1, ArrayList<Double> list2, ArrayList<Double> list3, ArrayList<Double> list4, ArrayList<Double> list5){
+
     }
 }
 
