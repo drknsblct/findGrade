@@ -197,9 +197,6 @@ public class MesosOros {
 
     public static void findFinalTest() {}
 
-    public static void findOthersAverageScore(ArrayList<Double> megaList, ArrayList<Double> list1, ArrayList<Double> list2, ArrayList<Double> list3, ArrayList<Double> list4, ArrayList<Double> list5){
-
-    }
 }
 
 
