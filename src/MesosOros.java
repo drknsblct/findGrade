@@ -261,6 +261,7 @@ public class MesosOros {
             editedMegalist.add(num / 6);
         }
 
+<<<<<<< HEAD
         double sum = 0.0;
         for (Double num : editedMegalist) {
             sum += num;
@@ -294,6 +295,8 @@ public class MesosOros {
         }
         System.out.println();
     }
+=======
+>>>>>>> d4bb663175b6446fcca991c398dd9f8d61b6fd3b
 }
 
 
