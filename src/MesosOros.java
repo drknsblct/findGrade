@@ -225,8 +225,8 @@ public class MesosOros {
                 add("Panagiwths");
                 add("Iakwvos");
                 add("Spyros");
-                add("Kelaidiths");
-                add("Ntostoglou");
+                add("Alex K");
+                add("Alex N");
                 add("Swthrhs");
                 add("Periklhs");
             }
