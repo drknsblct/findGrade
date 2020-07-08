@@ -173,13 +173,13 @@ public class MesosOros {
             if (choice == 2) {
                 System.out.print("Enter index to remove: ");
                 int index = scan.nextInt();
-                if (list.size() - 1 < index) {
+                if (list.size() - 1 < index - 1) {
                     System.out.println("There's no such index!\n");
                     continue;
                 }
                 System.out.printf("Deleted index %d\n\n", index);
-                list.remove(index);
-                coursesList.remove(index);
+                list.remove(index - 1);
+                coursesList.remove(index - 1);
 
                 break;
             }
@@ -212,8 +212,8 @@ public class MesosOros {
         }
     }
 
-    public static void findFinalTest() {
-    }
+//    public static void findFinalTest() {
+//    }
 
 
     public static void findOthersAverageScore(ArrayList<Double> megaList, ArrayList<Double> list1,
@@ -225,8 +225,8 @@ public class MesosOros {
                 add("Panagiwths");
                 add("Iakwvos");
                 add("Spyros");
-                add("Kelaidiths");
-                add("Ntostoglou");
+                add("Alex K");
+                add("Alex N");
                 add("Swthrhs");
                 add("Periklhs");
             }
