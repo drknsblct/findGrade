@@ -85,7 +85,7 @@ public class MesosOros {
         for (int i = 0; i < courses; i++) {
             double va9mos;
             double pososto;
-            double sum = 0.0;
+            double sum = 0;
             System.out.print("Enter name of course: ");
             String course = scan.nextLine();
             if (course.equals("")) {
@@ -117,7 +117,7 @@ public class MesosOros {
     }
 
     public static void printArray(ArrayList<Double> list, ArrayList<String> coursesList) {
-        double sum = 0.0;
+        double sum = 0;
         if (list.size() >= 2) {
             for (int i = 0; i < list.size(); i++) {
                 System.out.printf("%d. %s: %.2f\n", i + 1, coursesList.get(i), list.get(i));
@@ -134,16 +134,13 @@ public class MesosOros {
     public static void findAverage(ArrayList<Double> averageList) {
         Scanner scan = new Scanner(System.in);
         int i = 1;
-        while (true) {
+        while (i < 7) {
             System.out.printf("Enter score[%d]: ", i);
             double num = scan.nextDouble();
-            if (num == 0) {
-                break;
-            }
             averageList.add(num);
             i++;
         }
-        double sum = 0.0;
+        double sum = 0;
         for (Double num : averageList) {
             sum += num;
         }
@@ -262,7 +259,7 @@ public class MesosOros {
         }
 
 
-        double sum = 0.0;
+        double sum = 0;
         for (Double num : editedMegalist) {
             sum += num;
 
