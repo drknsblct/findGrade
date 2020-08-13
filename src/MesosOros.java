@@ -12,18 +12,23 @@ public class MesosOros {
         //Find others average score
         ArrayList<Double> megaList = new ArrayList<>();
         ArrayList<Double> editedMegaList = new ArrayList<>();
-        ArrayList<Double> list1 = new ArrayList<>();
-        ArrayList<Double> list2 = new ArrayList<>();
-        ArrayList<Double> list3 = new ArrayList<>();
-        ArrayList<Double> list4 = new ArrayList<>();
-        ArrayList<Double> list5 = new ArrayList<>();
-        ArrayList<Double> list6 = new ArrayList<>();
+        ArrayList<Double> course1 = new ArrayList<>();
+        ArrayList<Double> course2 = new ArrayList<>();
+        ArrayList<Double> course3 = new ArrayList<>();
+        ArrayList<Double> course4 = new ArrayList<>();
+        ArrayList<Double> course5 = new ArrayList<>();
+        ArrayList<Double> course6 = new ArrayList<>();
 
 
         Scanner scan = new Scanner(System.in);
         while (true) {
-            System.out.println("1. Add Courses || 2. View Average Score || 3. Reset List || 4. " +
-                    "Find Average Score || 5. Delete Entries || 6. Find Others Average Score || 0. Exit");
+            System.out.println("[1] Add Courses\n" +
+                    "[2] View Average Score\n" +
+                    "[3] Reset List\n" +
+                    "[4] Find Average Score\n" +
+                    "[5] Delete Entries\n" +
+                    "[6] Find Others Average Score\n" +
+                    "[0] Exit\n");
             System.out.print("Choice: ");
             int answer = scan.nextInt();
             if (answer == 0) {
@@ -31,12 +36,12 @@ public class MesosOros {
                 break;
             }
             if (answer == 1) {
-                System.out.println("<<< Add Courses >>>");
+                System.out.println("\n<<< Add Courses >>>");
                 courses(list, coursesList);
                 printArray(list, coursesList);
             }
             if (answer == 2) {
-                System.out.println("<<< View Average Score >>>");
+                System.out.println("\n<<< View Average Score >>>");
                 if (list.isEmpty()) {
                     System.out.println("The list is currently empty!\n");
                     continue;
@@ -44,7 +49,7 @@ public class MesosOros {
                 printArray(list, coursesList);
             }
             if (answer == 3) {
-                System.out.println("<<< Reset List >>>");
+                System.out.println("\n<<< Reset List >>>");
                 if (list.isEmpty()) {
                     System.out.println("The list is currently empty!\n");
                     continue;
@@ -54,17 +59,17 @@ public class MesosOros {
                 coursesList.clear();
             }
             if (answer == 4) {
-                System.out.println("<<< Find Average Score >>>");
+                System.out.println("\n<<< Find Average Score >>>");
                 findAverage(averageList);
                 averageList.clear();
             }
             if (answer == 5) {
-                System.out.println("<<< Delete Entries >>>");
+                System.out.println("\n<<< Delete Courses >>>");
                 deleteItems(list, coursesList);
             }
             if (answer == 6) {
-                System.out.println("<<< Find Others Average Score >>>");
-                findOthersAverageScore(megaList, list1, list2, list3, list4, list5, list6, editedMegaList);
+                System.out.println("\n<<< Find Class Average Score >>>");
+                findOthersAverageScore(megaList, course1, course2, course3, course4, course5, course6, editedMegaList);
             }
 
         }
@@ -144,7 +149,7 @@ public class MesosOros {
         for (Double num : averageList) {
             sum += num;
         }
-        System.out.printf("-->Mesos oros: %.2f<--\n\n", sum / averageList.size());
+        System.out.printf("\n-->Mesos oros: %.2f<--\n\n", sum / averageList.size());
     }
 
     public static void deleteItems(ArrayList<Double> list, ArrayList<String> coursesList) {
@@ -213,10 +218,10 @@ public class MesosOros {
 //    }
 
 
-    public static void findOthersAverageScore(ArrayList<Double> megaList, ArrayList<Double> list1,
-                                              ArrayList<Double> list2, ArrayList<Double> list3,
-                                              ArrayList<Double> list4, ArrayList<Double> list5,
-                                              ArrayList<Double> list6, ArrayList<Double> editedMegalist) {
+    public static void findOthersAverageScore(ArrayList<Double> megaList, ArrayList<Double> course1,
+                                              ArrayList<Double> course2, ArrayList<Double> course3,
+                                              ArrayList<Double> course4, ArrayList<Double> course5,
+                                              ArrayList<Double> course6, ArrayList<Double> editedMegalist) {
         ArrayList<String> names = new ArrayList<String>() {
             {
                 add("Panagiwths");
@@ -237,22 +242,22 @@ public class MesosOros {
                 System.out.println();
             }
             if (i <= 7) {
-                list1.add(va9mos);
+                course1.add(va9mos);
             } else if (i <= 14) {
-                list2.add(va9mos);
+                course2.add(va9mos);
             } else if (i <= 21) {
-                list3.add(va9mos);
+                course3.add(va9mos);
             } else if (i <= 28) {
-                list4.add(va9mos);
+                course4.add(va9mos);
             } else if (i <= 35) {
-                list5.add(va9mos);
+                course5.add(va9mos);
             } else {
-                list6.add(va9mos);
+                course6.add(va9mos);
             }
         }
 
         for (int i = 0; i < 7; i++) {
-            megaList.add(list1.get(i) + list2.get(i) + list3.get(i) + list4.get(i) + list5.get(i) + list6.get(i));
+            megaList.add(course1.get(i) + course2.get(i) + course3.get(i) + course4.get(i) + course5.get(i) + course6.get(i));
         }
         for (Double num : megaList) {
             editedMegalist.add(num / 6);
@@ -264,7 +269,7 @@ public class MesosOros {
             sum += num;
 
         }
-        System.out.printf("Class average: %.2f\n\n", sum / editedMegalist.size());
+        System.out.printf("-->Class average: %.2f<--\n\n", sum / editedMegalist.size());
 
         for (int i = 0; i < 7; i++) {
             System.out.printf("%d. %s: \t %.2f\n", i + 1,
