@@ -3,9 +3,6 @@ import java.util.Scanner;
 
 
 public class FindGrade {
-    static Scanner scan = new Scanner(System.in);
-
-
 
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
@@ -18,14 +15,15 @@ public class FindGrade {
         FindGradeFunctions.logo();
 
         while (true) {
+            Scanner scan = new Scanner(System.in);
             System.out.println("[1] Add Courses\t\t" +
                     "[4] Find Student Grade\n" +
                     "[2] View List\t\t" +
-                    "[5] Delete Entries\n"+
+                    "[5] Delete Entries\n" +
                     "[3] Reset List\t\t" +
-                    "[6] Find Class Average\n"+
+                    "[6] Find Class Average\n" +
                     "[0] Exit\n");
-            System.out.print("Choice: ");
+            System.out.print("Enter number: ");
             int answer = scan.nextInt();
             if (answer == 0) {
                 System.out.println("Exiting program!\n");

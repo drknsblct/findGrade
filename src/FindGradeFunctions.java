@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class FindGradeFunctions {
@@ -8,10 +9,11 @@ public class FindGradeFunctions {
     }
 
     public static void courses(ArrayList<Double> list, ArrayList<String> coursesList) {
+        Scanner scan = new Scanner(System.in);
         System.out.print("Enter number of courses: ");
-        int courses = Integer.parseInt(FindGrade.scan.nextLine());
+        int courses = Integer.parseInt(scan.nextLine());
         System.out.print("Enter number of CW: ");
-        int cw = Integer.parseInt(FindGrade.scan.nextLine());
+        int cw = Integer.parseInt(scan.nextLine());
         System.out.println();
 
         for (int i = 0; i < courses; i++) {
@@ -19,7 +21,7 @@ public class FindGradeFunctions {
             double percent;
             double sum = 0;
             System.out.print("Enter name of course (press enter to skip): ");
-            String course = FindGrade.scan.nextLine();
+            String course = scan.nextLine();
             if (course.equals("")) {
                 course = "Course";
             }
@@ -30,14 +32,14 @@ public class FindGradeFunctions {
                     System.out.printf("%s - CW[%d]\n", course, j + 1);
                 }
                 System.out.print("Grade: ");
-                grade = Double.parseDouble(FindGrade.scan.nextLine());
+                grade = Double.parseDouble(scan.nextLine());
 
                 if (grade == 0) {
                     System.out.println();
                     continue;
                 }
                 System.out.print("Percent: ");
-                percent = Integer.parseInt(FindGrade.scan.nextLine());
+                percent = Integer.parseInt(scan.nextLine());
                 System.out.println();
                 sum += modifyGrade(grade, percent);
             }
@@ -60,10 +62,11 @@ public class FindGradeFunctions {
     }
 
     public static void findStudentAverage(ArrayList<Double> averageList) {
+        Scanner scan = new Scanner(System.in);
         int i = 1;
         while (i < 7) {
             System.out.printf("Enter grade[%d]: ", i);
-            double num = FindGrade.scan.nextDouble();
+            double num = scan.nextDouble();
             averageList.add(num);
             i++;
         }
@@ -75,6 +78,7 @@ public class FindGradeFunctions {
     }
 
     public static void deleteItems(ArrayList<Double> list, ArrayList<String> coursesList) {
+        Scanner scan = new Scanner(System.in);
         while (true) {
             if (list.isEmpty()) {
                 System.out.println("The list is currently empty!\n");
@@ -82,7 +86,7 @@ public class FindGradeFunctions {
             }
             System.out.println("0. Exit || 1. Delete last || 2. Delete index || 3. Delete course || 4. Reset list");
             System.out.print("Choice: ");
-            int choice = Integer.parseInt(FindGrade.scan.nextLine());
+            int choice = Integer.parseInt(scan.nextLine());
 
             if (choice == 0) {
                 break;
@@ -95,7 +99,7 @@ public class FindGradeFunctions {
             }
             if (choice == 2) { // deletes list items based on index
                 System.out.print("Enter index to remove: ");
-                int index = FindGrade.scan.nextInt();
+                int index = scan.nextInt();
                 if (list.size() - 1 < index - 1) {
                     System.out.println("There's no such index!\n");
                     continue;
@@ -109,7 +113,7 @@ public class FindGradeFunctions {
             if (choice == 3) { // deletes list items based on course name
                 boolean found = false;
                 System.out.print("Enter course to remove: ");
-                String courseName = FindGrade.scan.nextLine();
+                String courseName = scan.nextLine();
                 for (int i = 0; i < coursesList.size(); i++) {
                     if (courseName.equals(coursesList.get(i))) {
                         System.out.println("Removed course: " + courseName);
@@ -134,6 +138,7 @@ public class FindGradeFunctions {
     }
 
     public static void findClassAverageScore(ArrayList<Double> gradesArray) {
+        Scanner scan = new Scanner(System.in);
         double[][] courseGrades = new double[6][7];
         ArrayList<String> names = new ArrayList<>() {
             {
@@ -150,7 +155,7 @@ public class FindGradeFunctions {
             System.out.println();
             for (int j = 0; j < 7; j++) {
                 System.out.printf("Course[%d], CW[%d]: ", i + 1, j + 1);
-                double grade = Double.parseDouble(FindGrade.scan.nextLine());
+                double grade = Double.parseDouble(scan.nextLine());
                 courseGrades[i][j] = grade; //loop that populates 2d array
                 gradesArray.add(courseGrades[i][j]); // adds items to list
             }
@@ -185,13 +190,13 @@ public class FindGradeFunctions {
 
     public static void logo(){
         String logo1 =
-
-        "███████╗██╗███╗   ██╗██████╗  ██████╗ ██████╗  █████╗ ██████╗ ███████╗\n"+
-        "██╔════╝██║████╗  ██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝\n"+
-        "█████╗  ██║██╔██╗ ██║██║  ██║██║  ███╗██████╔╝███████║██║  ██║█████╗  \n"+
-        "██╔══╝  ██║██║╚██╗██║██║  ██║██║   ██║██╔══██╗██╔══██║██║  ██║██╔══╝  \n"+
-        "██║     ██║██║ ╚████║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝███████╗\n"+
-        "╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
+        "                                                                       \n"+
+        " ███████╗██╗███╗   ██╗██████╗  ██████╗ ██████╗  █████╗ ██████╗ ███████╗\n"+
+        " ██╔════╝██║████╗  ██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝\n"+
+        " █████╗  ██║██╔██╗ ██║██║  ██║██║  ███╗██████╔╝███████║██║  ██║█████╗  \n"+
+        " ██╔══╝  ██║██║╚██╗██║██║  ██║██║   ██║██╔══██╗██╔══██║██║  ██║██╔══╝  \n"+
+        " ██║     ██║██║ ╚████║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝███████╗\n"+
+        " ╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
 
 
         System.out.println(logo1);
