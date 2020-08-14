@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MesosOros.iml" filepath="$PROJECT_DIR$/MesosOros.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FindGrade.iml" filepath="$PROJECT_DIR$/FindGrade.iml" />
     </modules>
   </component>
 </project>

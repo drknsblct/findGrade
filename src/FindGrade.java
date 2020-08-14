@@ -18,12 +18,12 @@ public class FindGrade {
         FindGradeFunctions.logo();
 
         while (true) {
-            System.out.println("[1] Add Courses\n" +
-                    "[2] View Average Score\n" +
-                    "[3] Reset List\n" +
-                    "[4] Find Average Score\n" +
-                    "[5] Delete Entries\n" +
-                    "[6] Find Others Average Score\n" +
+            System.out.println("[1] Add Courses\t\t" +
+                    "[4] Find Student Grade\n" +
+                    "[2] View List\t\t" +
+                    "[5] Delete Entries\n"+
+                    "[3] Reset List\t\t" +
+                    "[6] Find Class Average\n"+
                     "[0] Exit\n");
             System.out.print("Choice: ");
             int answer = scan.nextInt();
@@ -37,7 +37,7 @@ public class FindGrade {
                 FindGradeFunctions.printArray(list, coursesList);
             }
             if (answer == 2) {
-                System.out.println("\n<<< View Average Score >>>");
+                System.out.println("\n<<< View List >>>");
                 if (list.isEmpty()) {
                     System.out.println("The list is currently empty!\n");
                     continue;
@@ -56,7 +56,7 @@ public class FindGrade {
             }
             if (answer == 4) {
                 System.out.println("\n<<< Find Average Score >>>");
-                FindGradeFunctions.findAverage(averageList);
+                FindGradeFunctions.findStudentAverage(averageList);
                 averageList.clear();
             }
             if (answer == 5) {
@@ -70,12 +70,6 @@ public class FindGrade {
 
         }
     }
-
-
-    //    public static void findFinalTest() {
-//    }
-
-
 }
 
 

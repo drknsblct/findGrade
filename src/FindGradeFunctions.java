@@ -59,7 +59,7 @@ public class FindGradeFunctions {
         System.out.printf("-->Average: %.2f<--\n\n", sum / list.size());
     }
 
-    public static void findAverage(ArrayList<Double> averageList) {
+    public static void findStudentAverage(ArrayList<Double> averageList) {
         int i = 1;
         while (i < 7) {
             System.out.printf("Enter grade[%d]: ", i);
@@ -194,22 +194,6 @@ public class FindGradeFunctions {
         "╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
 
 
-
-        String logo2 =
-
-
-        "@@@@@@@@  @@@  @@@  @@@  @@@@@@@    @@@@@@@@  @@@@@@@    @@@@@@   @@@@@@@   @@@@@@@@\n"+
-        "@@@@@@@@  @@@  @@@@ @@@  @@@@@@@@  @@@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@\n"+
-        "@@!       @@!  @@!@!@@@  @@!  @@@  !@@        @@!  @@@  @@!  @@@  @@!  @@@  @@!\n"+
-        "!@!       !@!  !@!!@!@!  !@!  @!@  !@!        !@!  @!@  !@!  @!@  !@!  @!@  !@!\n"+
-        "@!!!:!    !!@  @!@ !!@!  @!@  !@!  !@! @!@!@  @!@!!@!   @!@!@!@!  @!@  !@!  @!!!:!\n"+
-        "!!!!!:    !!!  !@!  !!!  !@!  !!!  !!! !!@!!  !!@!@!    !!!@!!!!  !@!  !!!  !!!!!:\n"+
-        "!!:       !!:  !!:  !!!  !!:  !!!  :!!   !!:  !!: :!!   !!:  !!!  !!:  !!!  !!:\n"+
-        ":!:       :!:  :!:  !:!  :!:  !:!  :!:   !::  :!:  !:!  :!:  !:!  :!:  !:!  :!:\n"+
-         "::        ::   ::   ::   :::: ::   ::: ::::  ::   :::  ::   :::   :::: ::   :: ::::\n"+
-         ":        :    ::    :   :: :  :    :: :: :    :   : :   :   : :  :: :  :   : :: ::\n";
-
-
         System.out.println(logo1);
 
 
@@ -218,4 +202,8 @@ public class FindGradeFunctions {
 
 
     }
+
+//    public static void findFinalTest(){
+//
+//    }
 }
