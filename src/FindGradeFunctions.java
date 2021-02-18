@@ -12,8 +12,6 @@ public class FindGradeFunctions {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter number of courses: ");
         int courses = Integer.parseInt(scan.nextLine());
-        System.out.print("Enter number of CW: ");
-        int cw = Integer.parseInt(scan.nextLine());
         System.out.println();
 
         for (int i = 0; i < courses; i++) {
@@ -25,6 +23,8 @@ public class FindGradeFunctions {
             if (course.equals("")) {
                 course = "Course";
             }
+            System.out.print("Enter number of CW: ");
+            int cw = Integer.parseInt(scan.nextLine());
             for (int j = 0; j < cw; j++) {
                 if (course.equals("Course")) {
                     System.out.printf("Course[%d] - CW[%d]\n", i + 1, j + 1);
