@@ -140,13 +140,13 @@ public class FindGradeFunctions {
         double[][] courseGrades = new double[6][7];
         ArrayList<String> names = new ArrayList<>() {
             {
-                add("Panagiwths");
-                add("Iakwvos");
-                add("Spyros");
-                add("Alex K");
-                add("Alex N");
-                add("Swthrhs");
-                add("Periklhs");
+                add("Student1");
+                add("Student2");
+                add("Student3");
+                add("Student4");
+                add("Student5");
+                add("Student6");
+                add("Student7");
             }
         };
         for (int i = 0; i < 6; i++) {
