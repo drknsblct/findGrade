@@ -63,12 +63,10 @@ public class FindGradeFunctions {
 
     public static void findStudentAverage(ArrayList<Double> averageList) {
         Scanner scan = new Scanner(System.in);
-        int i = 1;
-        while (i < 7) {
+        for (int i = 0; i < 7; i++) {
             System.out.printf("Enter grade[%d]: ", i);
             double num = scan.nextDouble();
             averageList.add(num);
-            i++;
         }
         double sum = 0;
         for (Double num : averageList) {
@@ -168,7 +166,7 @@ public class FindGradeFunctions {
         gradesArray.subList(0, 42).clear(); //deletes old items in list
 
         for (int i = 0; i < 7; i++) {
-            gradesArray.add(gradesArray.get(i)/6); //adds modified numbers to list
+            gradesArray.add(gradesArray.get(i) / 6); //adds modified numbers to list
         }
         gradesArray.subList(0, 7).clear(); //deletes old items in list
 
@@ -182,28 +180,25 @@ public class FindGradeFunctions {
             System.out.printf("%d. %s: \t %.2f\n", i + 1,
                     names.get(gradesArray.indexOf(Collections.max(gradesArray))),
                     Collections.max(gradesArray)); // finds the name with the max grade
-            names.remove(gradesArray.indexOf(Collections.max(gradesArray))); // deletes old name and grade and loops again to find max
+            names.remove(gradesArray.indexOf(Collections.max(gradesArray))); // deletes old name and grade and loops
+            // again to find max
             gradesArray.remove(Collections.max(gradesArray));
         }
         System.out.println();
     }
 
-    public static void logo(){
+    public static void logo() {
         String logo1 =
-        "                                                                       \n"+
-        " ███████╗██╗███╗   ██╗██████╗  ██████╗ ██████╗  █████╗ ██████╗ ███████╗\n"+
-        " ██╔════╝██║████╗  ██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝\n"+
-        " █████╗  ██║██╔██╗ ██║██║  ██║██║  ███╗██████╔╝███████║██║  ██║█████╗  \n"+
-        " ██╔══╝  ██║██║╚██╗██║██║  ██║██║   ██║██╔══██╗██╔══██║██║  ██║██╔══╝  \n"+
-        " ██║     ██║██║ ╚████║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝███████╗\n"+
-        " ╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
+                "                                                                       \n" +
+                        " ███████╗██╗███╗   ██╗██████╗  ██████╗ ██████╗  █████╗ ██████╗ ███████╗\n" +
+                        " ██╔════╝██║████╗  ██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝\n" +
+                        " █████╗  ██║██╔██╗ ██║██║  ██║██║  ███╗██████╔╝███████║██║  ██║█████╗  \n" +
+                        " ██╔══╝  ██║██║╚██╗██║██║  ██║██║   ██║██╔══██╗██╔══██║██║  ██║██╔══╝  \n" +
+                        " ██║     ██║██║ ╚████║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝███████╗\n" +
+                        " ╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
 
 
         System.out.println(logo1);
-
-
-
-
 
 
     }
