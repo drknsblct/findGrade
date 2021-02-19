@@ -146,13 +146,14 @@ public class FindGradeFunctions {
                 add("Alex K");
                 add("Alex N");
                 add("Swthrhs");
+                add("Iwshf");
                 add("Periklhs");
             }
         };
         for (int i = 0; i < 6; i++) {
             System.out.println();
             for (int j = 0; j < 7; j++) {
-                System.out.printf("Course[%d], CW[%d]: ", i + 1, j + 1);
+                System.out.printf("Course[%d], Student[%d]: ", i + 1, j + 1);
                 double grade = Double.parseDouble(scan.nextLine());
                 courseGrades[i][j] = grade; //loop that populates 2d array
                 gradesArray.add(courseGrades[i][j]); // adds items to list
