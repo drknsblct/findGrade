@@ -149,7 +149,7 @@ public class FindGradeFunctions {
                 add("Periklhs");
             }
         };
-        int numOfStudents = 8;
+        int numOfStudents = names.size();
         double[][] courseGrades = new double[6][numOfStudents];
         for (int i = 0; i < 6; i++) {
             System.out.println();
@@ -162,10 +162,10 @@ public class FindGradeFunctions {
         }
         for (int i = 0; i < numOfStudents; i++) {
             gradesArray.add(gradesArray.get(i) + gradesArray.get(i + numOfStudents) + gradesArray.get(i + numOfStudents * 2) + gradesArray.get(i + numOfStudents * 3) +
-                    gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to list every i and i+7*num item
+                    gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to every nth item
 
         }
-        gradesArray.subList(0, 42).clear(); //deletes old items in list
+        gradesArray.subList(0, numOfStudents * 6).clear(); //deletes old items in list     //CHANGE TO COURSES X STUDENTS
 
         for (int i = 0; i < numOfStudents; i++) {
             gradesArray.add(gradesArray.get(i) / 6); //adds modified numbers to list
