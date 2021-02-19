@@ -139,14 +139,14 @@ public class FindGradeFunctions {
         Scanner scan = new Scanner(System.in);
         ArrayList<String> names = new ArrayList<>() {
             {
-                add("Panagiwths");
-                add("Iakwvos");
-                add("Spyros");
-                add("Alex K");
-                add("Alex N");
-                add("Swthrhs");
-                add("Iwshf");
-                add("Periklhs");
+                add("Student1");
+                add("Student2");
+                add("Student3");
+                add("Student4");
+                add("Student5");
+                add("Student6");
+                add("Student7");
+                add("Student8");
             }
         };
         int numOfStudents = names.size();
