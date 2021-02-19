@@ -147,6 +147,7 @@ public class FindGradeFunctions {
                 add("Student6");
                 add("Student7");
                 add("Student8");
+
             }
         };
         int numOfStudents = names.size();
@@ -165,7 +166,7 @@ public class FindGradeFunctions {
                     gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to every nth item
 
         }
-        gradesArray.subList(0, numOfStudents * 6).clear(); //deletes old items in list     //CHANGE TO COURSES X STUDENTS
+        gradesArray.subList(0, numOfStudents * 6).clear(); //deletes old items in list     
 
         for (int i = 0; i < numOfStudents; i++) {
             gradesArray.add(gradesArray.get(i) / 6); //adds modified numbers to list
