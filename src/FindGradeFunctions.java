@@ -137,7 +137,6 @@ public class FindGradeFunctions {
 
     public static void findClassAverageScore(ArrayList<Double> gradesArray) {
         Scanner scan = new Scanner(System.in);
-        double[][] courseGrades = new double[6][7];
         ArrayList<String> names = new ArrayList<>() {
             {
                 add("Panagiwths");
@@ -150,26 +149,28 @@ public class FindGradeFunctions {
                 add("Periklhs");
             }
         };
+        int numOfStudents = 8;
+        double[][] courseGrades = new double[6][numOfStudents];
         for (int i = 0; i < 6; i++) {
             System.out.println();
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < numOfStudents; j++) {
                 System.out.printf("Course[%d], Student[%d]: ", i + 1, j + 1);
                 double grade = Double.parseDouble(scan.nextLine());
                 courseGrades[i][j] = grade; //loop that populates 2d array
                 gradesArray.add(courseGrades[i][j]); // adds items to list
             }
         }
-        for (int i = 0, n = 7; i < 7; i++) {
-            gradesArray.add(gradesArray.get(i) + gradesArray.get(i + n) + gradesArray.get(i + n * 2) + gradesArray.get(i + n * 3) +
-                    gradesArray.get(i + n * 4) + gradesArray.get(i + n * 5)); // adds to list every i and i+7*num item
+        for (int i = 0; i < numOfStudents; i++) {
+            gradesArray.add(gradesArray.get(i) + gradesArray.get(i + numOfStudents) + gradesArray.get(i + numOfStudents * 2) + gradesArray.get(i + numOfStudents * 3) +
+                    gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to list every i and i+7*num item
 
         }
         gradesArray.subList(0, 42).clear(); //deletes old items in list
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < numOfStudents; i++) {
             gradesArray.add(gradesArray.get(i) / 6); //adds modified numbers to list
         }
-        gradesArray.subList(0, 7).clear(); //deletes old items in list
+        gradesArray.subList(0, numOfStudents).clear(); //deletes old items in list
 
         double sum = 0;
         for (Double num : gradesArray) {
@@ -177,7 +178,7 @@ public class FindGradeFunctions {
         }
         System.out.printf("\n-->Class average: %.2f<--\n\n", sum / gradesArray.size());
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < numOfStudents; i++) {
             System.out.printf("%d. %s: \t %.2f\n", i + 1,
                     names.get(gradesArray.indexOf(Collections.max(gradesArray))),
                     Collections.max(gradesArray)); // finds the name with the max grade
@@ -200,11 +201,5 @@ public class FindGradeFunctions {
 
 
         System.out.println(logo1);
-
-
     }
-
-//    public static void findFinalTest(){
-//
-//    }
 }
