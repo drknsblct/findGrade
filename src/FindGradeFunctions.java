@@ -137,25 +137,38 @@ public class FindGradeFunctions {
 
     public static void findClassAverageScore(ArrayList<Double> gradesArray) {
         Scanner scan = new Scanner(System.in);
-        ArrayList<String> names = new ArrayList<>() {
-            {
-                add("Student1");
-                add("Student2");
-                add("Student3");
-                add("Student4");
-                add("Student5");
-                add("Student6");
-                add("Student7");
-                add("Student8");
-
+        ArrayList<String> names = new ArrayList<>();
+        System.out.println("Continue with: My classroom[1] | New classroom[2]? ");
+        int answer = Integer.parseInt(scan.nextLine());
+        if (answer == 1) {
+            names = new ArrayList<>() {
+                {
+                    add("Panagiwths");
+                    add("Iakwvos");
+                    add("Spyros");
+                    add("Alex K");
+                    add("Alex N");
+                    add("Swthrhs");
+                    add("Iwshf");
+                    add("Periklhs");
+                }
+            };
+        } else if (answer == 2){
+            System.out.println("How many students? ");
+            int numOfStudents = Integer.parseInt(scan.nextLine());
+            for (int i = 0; i < numOfStudents; i++) {
+                System.out.print("Student name: ");
+                names.add(scan.nextLine());
             }
-        };
+        }
         int numOfStudents = names.size();
-        double[][] courseGrades = new double[6][numOfStudents];
-        for (int i = 0; i < 6; i++) {
+        int numOfCourses = 6;
+        double[][] courseGrades = new double[numOfCourses][numOfStudents];
+        for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
-                System.out.printf("Course[%d], Student[%d]: ", i + 1, j + 1);
+//                System.out.printf("Course[%d], Student[%d]: ", i + 1, j + 1);
+                System.out.printf("Course[%d], %s: ", i + 1, names.get(j));
                 double grade = Double.parseDouble(scan.nextLine());
                 courseGrades[i][j] = grade; //loop that populates 2d array
                 gradesArray.add(courseGrades[i][j]); // adds items to list
@@ -166,10 +179,10 @@ public class FindGradeFunctions {
                     gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to every nth item
 
         }
-        gradesArray.subList(0, numOfStudents * 6).clear(); //deletes old items in list     
+        gradesArray.subList(0, numOfStudents * numOfCourses).clear(); //deletes old items in list
 
         for (int i = 0; i < numOfStudents; i++) {
-            gradesArray.add(gradesArray.get(i) / 6); //adds modified numbers to list
+            gradesArray.add(gradesArray.get(i) / numOfCourses); //adds modified numbers to list
         }
         gradesArray.subList(0, numOfStudents).clear(); //deletes old items in list
 
