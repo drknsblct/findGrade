@@ -139,20 +139,31 @@ public class FindGradeFunctions {
         Scanner scan = new Scanner(System.in);
         ArrayList<String> names = new ArrayList<>() {
             {
-                add("Student1");
-                add("Student2");
-                add("Student3");
-                add("Student4");
-                add("Student5");
-                add("Student6");
-                add("Student7");
-                add("Student8");
+//                add("Student1");
+//                add("Student2");
+//                add("Student3");
+//                add("Student4");
+//                add("Student5");
+//                add("Student6");
+//                add("Student7");
+//                add("Student8");
+
+                add("Panagiwths");
+                add("Iakwvos");
+                add("Spyros");
+                add("Alex K");
+                add("Alex N");
+                add("Swthrhs");
+                add("Iwshf");
+                add("Periklhs");
 
             }
         };
         int numOfStudents = names.size();
-        double[][] courseGrades = new double[6][numOfStudents];
-        for (int i = 0; i < 6; i++) {
+        int numOfCourses = 6;
+        double[][] courseGrades = new double[numOfCourses][numOfStudents];
+
+        for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
                 System.out.printf("Course[%d], Student[%d]: ", i + 1, j + 1);
@@ -166,10 +177,10 @@ public class FindGradeFunctions {
                     gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to every nth item
 
         }
-        gradesArray.subList(0, numOfStudents * 6).clear(); //deletes old items in list     
+        gradesArray.subList(0, numOfStudents * numOfCourses).clear(); //deletes old items in list
 
         for (int i = 0; i < numOfStudents; i++) {
-            gradesArray.add(gradesArray.get(i) / 6); //adds modified numbers to list
+            gradesArray.add(gradesArray.get(i) / numOfCourses); //adds modified numbers to list
         }
         gradesArray.subList(0, numOfStudents).clear(); //deletes old items in list
 
