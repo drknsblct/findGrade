@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FindGrade:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FindGrade_jar</output-path>
+    <root id="archive" name="FindGrade.jar">
+      <element id="module-output" name="FindGrade" />
+    </root>
+  </artifact>
+</component>
