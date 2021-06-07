@@ -149,7 +149,6 @@ public class FindGradeFunctions {
                     add("Alex K");
                     add("Alex N");
                     add("Swthrhs");
-                    add("Iwshf");
                     add("Periklhs");
                 }
             };
