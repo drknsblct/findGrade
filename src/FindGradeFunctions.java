@@ -63,7 +63,7 @@ public class FindGradeFunctions {
     }
 
     public static void findStudentAverage(ArrayList<Double> averageList) {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 1; i < 7; i++) {
             System.out.printf("Enter grade[%d]: ", i);
             double num = scan.nextDouble();
             averageList.add(num);
