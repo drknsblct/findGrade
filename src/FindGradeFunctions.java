@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 
 public class FindGradeFunctions {
+    static Scanner scan = new Scanner(System.in);
+
     public static double modifyGrade(double grade, double percent) {
         return grade * (percent / 100);
     }
 
     public static void courses(ArrayList<Double> list, ArrayList<String> coursesList) {
-        Scanner scan = new Scanner(System.in);
         System.out.print("Enter number of courses: ");
         int courses = Integer.parseInt(scan.nextLine());
         System.out.println();
@@ -62,7 +63,6 @@ public class FindGradeFunctions {
     }
 
     public static void findStudentAverage(ArrayList<Double> averageList) {
-        Scanner scan = new Scanner(System.in);
         for (int i = 0; i < 6; i++) {
             System.out.printf("Enter grade[%d]: ", i);
             double num = scan.nextDouble();
@@ -76,7 +76,6 @@ public class FindGradeFunctions {
     }
 
     public static void deleteItems(ArrayList<Double> list, ArrayList<String> coursesList) {
-        Scanner scan = new Scanner(System.in);
         while (true) {
             if (list.isEmpty()) {
                 System.out.println("The list is currently empty!\n");
@@ -136,7 +135,6 @@ public class FindGradeFunctions {
     }
 
     public static void findClassAverageScore(ArrayList<Double> gradesArray) {
-        Scanner scan = new Scanner(System.in);
         ArrayList<String> names = new ArrayList<>();
         System.out.print("Continue with: My classroom[1] | New classroom[2]? ");
         int answer = Integer.parseInt(scan.nextLine());

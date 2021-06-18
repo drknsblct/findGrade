@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 
 public class FindGrade {
+    static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
@@ -15,7 +16,6 @@ public class FindGrade {
         FindGradeFunctions.logo();
 
         while (true) {
-            Scanner scan = new Scanner(System.in);
             System.out.println("[1] Add Courses\t\t" +
                     "[4] Find Student Grade\n" +
                     "[2] View List\t\t" +
