@@ -35,7 +35,7 @@ public class FindGrade {
             }
             if (answer == 2) {
                 System.out.println("\n<<< View List >>>");
-                if (list.isEmpty()) {
+                if (FindGradeFunctions.courses.size() == 0) {
                     System.out.println("The list is currently empty!\n");
                     continue;
                 }
@@ -43,13 +43,13 @@ public class FindGrade {
             }
             if (answer == 3) {
                 System.out.println("\n<<< Reset List >>>");
-                if (list.isEmpty()) {
+                if (FindGradeFunctions.courses.size() == 0) {
                     System.out.println("The list is currently empty!\n");
                     continue;
                 }
+                FindGradeFunctions.courses.clear();
                 System.out.println("Emptied list!\n");
-                list.clear();
-                coursesList.clear();
+
             }
             if (answer == 4) {
                 System.out.println("\n<<< Find Average Score >>>");
@@ -57,13 +57,12 @@ public class FindGrade {
             }
             if (answer == 5) {
                 System.out.println("\n<<< Delete Courses >>>");
-                FindGradeFunctions.deleteItems(list, coursesList);
+                FindGradeFunctions.deleteItems();
             }
             if (answer == 6) {
                 System.out.println("\n<<< Find Class Average Score >>>");
                 FindGradeFunctions.findClassAverageScore(gradesArray);
             }
-
         }
     }
 }

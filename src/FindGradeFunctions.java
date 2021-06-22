@@ -18,31 +18,26 @@ public class FindGradeFunctions {
             double sum = 0;
             System.out.print("Enter name of course (press enter to skip): ");
             String courseName = scan.nextLine();
+
             if (courseName.equals("")) {
-                courseName = "Course";
+                courseName = String.format("Course[%d]", i + 1);
             }
             System.out.print("Enter number of CW: ");
             int numOfCW = Integer.parseInt(scan.nextLine());
-            for (int j = 0; j < numOfCW; j++) {
-                if (courseName.equals("Course")) {
-                    System.out.printf("Course[%d] - CW[%d]\n", i + 1, j + 1);
-                } else {
-                    System.out.printf("%s - CW[%d]\n", courseName, j + 1);
-                }
-                System.out.print("Grade: ");
-                double grade = Double.parseDouble(scan.nextLine());
 
-                if (grade == 0) {
-                    System.out.println();
-                    continue;
-                }
-                System.out.print("Percent: ");
-                double percent = Integer.parseInt(scan.nextLine());
+            for (int j = 0; j < numOfCW; j++) {
+                System.out.printf("%s - CW[%d]\n", courseName, j + 1);
+                System.out.print("Grade, Percent: ");
+                String[] input = scan.nextLine().split(",");
+
+                double grade = Double.parseDouble(input[0]);
+                double percent = Double.parseDouble(input[1]);
                 System.out.println();
+
                 course = new Course(grade, percent);
                 sum += course.modifyGrade();
             }
-            courses.addCoursesAndGrades(courseName, sum);
+            courses.addCourseAndGrade(courseName, sum);
         }
     }
 
@@ -71,49 +66,30 @@ public class FindGradeFunctions {
                 System.out.println("The list is currently empty!\n");
                 break;
             }
-            System.out.println("0. Exit || 1. Delete last || 2. Delete index || 3. Delete course || 4. Reset list");
+            System.out.println("0. Exit || 1. Delete course || 2. Reset list");
             System.out.print("Choice: ");
             int choice = Integer.parseInt(scan.nextLine());
 
             if (choice == 0) {
+                System.out.println();
                 break;
             }
-            if (choice == 1) { // deletes last item of list
-                System.out.println("Deleted last entry\n");
-                courses.removeCoursesAndGrades(courses.size() - 1);
-                break;
-            }
-            if (choice == 2) { // deletes list items based on index
-                System.out.print("Enter index to remove: ");
-                int index = scan.nextInt();
-                if (courses.size() - 1 < index - 1) {
-                    System.out.println("There's no such index!\n");
-                    continue;
-                }
-                System.out.printf("Deleted index %d\n\n", index);
-                courses.removeCoursesAndGrades(index - 1);
-                break;
-            }
-            if (choice == 3) { // deletes list items based on course name
-                boolean found = false;
+
+            if (choice == 1) { // deletes list items based on course name
                 System.out.print("Enter course to remove: ");
-                String courseName = scan.nextLine();
-                if (courses.contains(courseName))
+                String courseName = scan.nextLine().toLowerCase();
+                if (courses.contains(courseName)) {
                     System.out.println("Removed course: " + courseName);
                     System.out.println();
-                    courses.removeCourse(courseName);
-                    list.remove(i);
-                    found = true;
+                    courses.remove(courseName);
                     break;
-                    }
-                if (!found) {
-                    System.out.println("There's no course with this name!\n");
                 }
+                System.out.println("There's no course with this name!\n");
             }
-            if (choice == 4) { // deletes lists
+
+            if (choice == 2) { // deletes lists
                 System.out.println("Deleted list\n");
-                list.clear();
-                coursesList.clear();
+                courses.clear();
                 break;
             }
         }

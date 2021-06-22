@@ -1,74 +1,47 @@
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 
-public class Courses extends ArrayList{
-    private ArrayList<String> courses;
-    private ArrayList<Double> grades;
+public class Courses {
+
+    private HashMap<String, Double> courseMap;
 
     public Courses() {
-        this.courses = new ArrayList<>();
-        this.grades = new ArrayList<>();
+        this.courseMap = new LinkedHashMap<>();
     }
 
-    private void addCourse(String course) {
-        courses.add(course);
+    public void addCourseAndGrade(String course, double grade) {
+        courseMap.put(course, grade);
     }
 
-    private void addGrade(Double grade) {
-        grades.add(grade);
-    }
-
-    public void removeCourse(String course) {
-        courses.remove(course);
-    }
-
-    public void removeGrades(Double grade) {
-        grades.remove(grade);
-    }
-    private void removeCourse(int i) {
-        courses.remove(i);
-    }
-
-    private void removeGrades(int i) {
-        grades.remove(i);
-    }
-
-    public void removeCoursesAndGrades(String course, Double grades) {
-        removeCourse(course);
-        removeGrades(grades);
-    }
-
-    public void removeCoursesAndGrades(int i) {
-        removeCourse(i);
-        removeGrades(i);
-    }
-
-    public void addCoursesAndGrades(String course, Double grades) {
-        addCourse(course);
-        addGrade(grades);
-    }
-
-    public int size(){
-        return courses.size();
+    public int size() {
+        return courseMap.size();
     }
 
     public void printCourses() {
         double sum = 0;
-        if (grades.size() >= 1) {
-            for (int i = 0; i < grades.size(); i++) {
-                System.out.printf("%d. %s: %.2f\n", i + 1, courses.get(i), grades.get(i));
-            }
+
+        for (String name : courseMap.keySet()) {
+            double value = courseMap.get(name);
+            System.out.printf("%s: %.2f\n", name, value);
         }
-        for (Double num : grades) {
+        for (Double num : courseMap.values()) {
             sum += num;
         }
-        System.out.printf("\n-->Average: %.2f<--\n\n", sum / grades.size());
+        System.out.printf("\n-->Average: %.2f<--\n\n", sum / courseMap.size());
     }
-    public boolean contains(Object o) {
-        return this.indexOf(o) >= 0;
+
+    public boolean contains(String name) {
+        return courseMap.containsKey(name);
     }
-//
+
+    public void remove(String course) {
+        courseMap.remove(course);
+    }
+
+    public void clear() {
+        courseMap.clear();
+    }
 
 }
+
 
 
