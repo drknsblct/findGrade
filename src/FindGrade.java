@@ -7,7 +7,6 @@ public class FindGrade {
 
     public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
-        ArrayList<Double> averageList = new ArrayList<>();
         ArrayList<String> coursesList = new ArrayList<>();
 
         //Find class average score
@@ -31,8 +30,8 @@ public class FindGrade {
             }
             if (answer == 1) {
                 System.out.println("\n<<< Add Courses >>>");
-                FindGradeFunctions.courses(list, coursesList);
-                FindGradeFunctions.printArray(list, coursesList);
+                FindGradeFunctions.courses();
+                FindGradeFunctions.printCourses();
             }
             if (answer == 2) {
                 System.out.println("\n<<< View List >>>");
@@ -40,7 +39,7 @@ public class FindGrade {
                     System.out.println("The list is currently empty!\n");
                     continue;
                 }
-                FindGradeFunctions.printArray(list, coursesList);
+                FindGradeFunctions.printCourses();
             }
             if (answer == 3) {
                 System.out.println("\n<<< Reset List >>>");
@@ -54,8 +53,7 @@ public class FindGrade {
             }
             if (answer == 4) {
                 System.out.println("\n<<< Find Average Score >>>");
-                FindGradeFunctions.findStudentAverage(averageList);
-                averageList.clear();
+                FindGradeFunctions.findStudentAverage();
             }
             if (answer == 5) {
                 System.out.println("\n<<< Delete Courses >>>");

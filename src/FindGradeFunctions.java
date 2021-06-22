@@ -5,79 +5,69 @@ import java.util.Scanner;
 
 public class FindGradeFunctions {
     static Scanner scan = new Scanner(System.in);
+    static Courses courses = new Courses();
 
-    public static double modifyGrade(double grade, double percent) {
-        return grade * (percent / 100);
-    }
 
-    public static void courses(ArrayList<Double> list, ArrayList<String> coursesList) {
+    public static void courses() {
+        Course course;
         System.out.print("Enter number of courses: ");
-        int courses = Integer.parseInt(scan.nextLine());
+        int numOfCourses = Integer.parseInt(scan.nextLine());
         System.out.println();
 
-        for (int i = 0; i < courses; i++) {
-            double grade;
-            double percent;
+        for (int i = 0; i < numOfCourses; i++) {
             double sum = 0;
             System.out.print("Enter name of course (press enter to skip): ");
-            String course = scan.nextLine();
-            if (course.equals("")) {
-                course = "Course";
+            String courseName = scan.nextLine();
+            if (courseName.equals("")) {
+                courseName = "Course";
             }
             System.out.print("Enter number of CW: ");
-            int cw = Integer.parseInt(scan.nextLine());
-            for (int j = 0; j < cw; j++) {
-                if (course.equals("Course")) {
+            int numOfCW = Integer.parseInt(scan.nextLine());
+            for (int j = 0; j < numOfCW; j++) {
+                if (courseName.equals("Course")) {
                     System.out.printf("Course[%d] - CW[%d]\n", i + 1, j + 1);
                 } else {
-                    System.out.printf("%s - CW[%d]\n", course, j + 1);
+                    System.out.printf("%s - CW[%d]\n", courseName, j + 1);
                 }
                 System.out.print("Grade: ");
-                grade = Double.parseDouble(scan.nextLine());
+                double grade = Double.parseDouble(scan.nextLine());
 
                 if (grade == 0) {
                     System.out.println();
                     continue;
                 }
                 System.out.print("Percent: ");
-                percent = Integer.parseInt(scan.nextLine());
+                double percent = Integer.parseInt(scan.nextLine());
                 System.out.println();
-                sum += modifyGrade(grade, percent);
+                course = new Course(grade, percent);
+                sum += course.modifyGrade();
             }
-            coursesList.add(course);
-            list.add(sum);
+            courses.addCoursesAndGrades(courseName, sum);
         }
     }
 
-    public static void printArray(ArrayList<Double> list, ArrayList<String> coursesList) {
-        double sum = 0;
-        if (list.size() >= 1) {
-            for (int i = 0; i < list.size(); i++) {
-                System.out.printf("%d. %s: %.2f\n", i + 1, coursesList.get(i), list.get(i));
-            }
-        }
-        for (Double num : list) {
-            sum += num;
-        }
-        System.out.printf("\n-->Average: %.2f<--\n\n", sum / list.size());
+    public static void printCourses() {
+        courses.printCourses();
     }
 
-    public static void findStudentAverage(ArrayList<Double> averageList) {
+    public static void findStudentAverage() {
+        Student student = new Student();
         for (int i = 1; i < 7; i++) {
             System.out.printf("Enter grade[%d]: ", i);
             double num = scan.nextDouble();
-            averageList.add(num);
+            student.addGrade(num);
         }
         double sum = 0;
-        for (Double num : averageList) {
+        for (Double num : student.grades()) {
             sum += num;
         }
-        System.out.printf("\n-->Average: %.2f<--\n\n", sum / averageList.size());
+        System.out.printf("\n-->Average: %.2f<--\n\n", sum / student.size());
+        student.clear();
     }
 
-    public static void deleteItems(ArrayList<Double> list, ArrayList<String> coursesList) {
+    public static void deleteItems() {
         while (true) {
-            if (list.isEmpty()) {
+            if (courses.size() == 0) {
                 System.out.println("The list is currently empty!\n");
                 break;
             }
@@ -90,37 +80,32 @@ public class FindGradeFunctions {
             }
             if (choice == 1) { // deletes last item of list
                 System.out.println("Deleted last entry\n");
-                list.remove(list.size() - 1);
-                coursesList.remove(coursesList.size() - 1);
+                courses.removeCoursesAndGrades(courses.size() - 1);
                 break;
             }
             if (choice == 2) { // deletes list items based on index
                 System.out.print("Enter index to remove: ");
                 int index = scan.nextInt();
-                if (list.size() - 1 < index - 1) {
+                if (courses.size() - 1 < index - 1) {
                     System.out.println("There's no such index!\n");
                     continue;
                 }
                 System.out.printf("Deleted index %d\n\n", index);
-                list.remove(index - 1);
-                coursesList.remove(index - 1);
-
+                courses.removeCoursesAndGrades(index - 1);
                 break;
             }
             if (choice == 3) { // deletes list items based on course name
                 boolean found = false;
                 System.out.print("Enter course to remove: ");
                 String courseName = scan.nextLine();
-                for (int i = 0; i < coursesList.size(); i++) {
-                    if (courseName.equals(coursesList.get(i))) {
-                        System.out.println("Removed course: " + courseName);
-                        System.out.println();
-                        coursesList.remove(courseName);
-                        list.remove(i);
-                        found = true;
-                        break;
+                if (courses.contains(courseName))
+                    System.out.println("Removed course: " + courseName);
+                    System.out.println();
+                    courses.removeCourse(courseName);
+                    list.remove(i);
+                    found = true;
+                    break;
                     }
-                }
                 if (!found) {
                     System.out.println("There's no course with this name!\n");
                 }
@@ -150,7 +135,7 @@ public class FindGradeFunctions {
                     add("Periklhs");
                 }
             };
-        } else if (answer == 2){
+        } else if (answer == 2) {
             System.out.print("How many students? ");
             int numOfStudents = Integer.parseInt(scan.nextLine());
             for (int i = 0; i < numOfStudents; i++) {
@@ -165,7 +150,6 @@ public class FindGradeFunctions {
         for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
-//                System.out.printf("Course[%d], Student[%d]: ", i + 1, j + 1);
                 System.out.printf("Course[%d], %s: ", i + 1, names.get(j));
                 double grade = Double.parseDouble(scan.nextLine());
                 courseGrades[i][j] = grade; //loop that populates 2d array
@@ -174,7 +158,8 @@ public class FindGradeFunctions {
         }
         for (int i = 0; i < numOfStudents; i++) {
             gradesArray.add(gradesArray.get(i) + gradesArray.get(i + numOfStudents) + gradesArray.get(i + numOfStudents * 2) + gradesArray.get(i + numOfStudents * 3) +
-                    gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to every nth item
+                    gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to
+            // every nth item
 
         }
         gradesArray.subList(0, numOfStudents * numOfCourses).clear(); //deletes old items in list
