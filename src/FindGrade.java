@@ -6,12 +6,9 @@ public class FindGrade {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ArrayList<Double> list = new ArrayList<>();
-        ArrayList<String> coursesList = new ArrayList<>();
 
         //Find class average score
         ArrayList<Double> gradesArray = new ArrayList<>();
-
         FindGradeFunctions.logo();
 
         while (true) {

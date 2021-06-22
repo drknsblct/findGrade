@@ -133,8 +133,13 @@ public class FindGradeFunctions {
             }
         }
         for (int i = 0; i < numOfStudents; i++) {
-            gradesArray.add(gradesArray.get(i) + gradesArray.get(i + numOfStudents) + gradesArray.get(i + numOfStudents * 2) + gradesArray.get(i + numOfStudents * 3) +
-                    gradesArray.get(i + numOfStudents * 4) + gradesArray.get(i + numOfStudents * 5)); // adds to
+            gradesArray.add(
+                            gradesArray.get(i)+
+                            gradesArray.get(i + numOfStudents) +
+                            gradesArray.get(i + numOfStudents * 2) +
+                            gradesArray.get(i + numOfStudents * 3) +
+                            gradesArray.get(i + numOfStudents * 4) +
+                            gradesArray.get(i + numOfStudents * 5)); // adds to
             // every nth item
 
         }

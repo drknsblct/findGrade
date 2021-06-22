@@ -1,19 +1,27 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Student {
     private String name;
     private int grade;
     private ArrayList<Double> grades;
+    private HashMap<String, Double> nameAndGrade;
 
-    public Student(String name, int grade) {
-        this.name = name;
-        this.grade = grade;
-        this.grades = new ArrayList<>();
+
+//    public Student(String name, int grade) {
+//        this.name = name;
+//        this.grade = grade;
+//        this.grades = new ArrayList<>();
+//        this.nameAndGrade = new LinkedHashMap<>();
+//    }
+
+    public Student(String name) {
+//        this.name = name;
+//        this.grades = new ArrayList<>();
+        this.nameAndGrade = new LinkedHashMap<>();
     }
 
-    public Student() {
-        this.grades = new ArrayList<>();
-    }
 
 
     public String getName() {

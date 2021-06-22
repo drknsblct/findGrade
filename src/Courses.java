@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Courses {
-
     private HashMap<String, Double> courseMap;
 
     public Courses() {

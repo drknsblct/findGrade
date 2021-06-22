@@ -10,6 +10,4 @@ public class Course {
     public double modifyGrade() {
         return grade * (percent / 100);
     }
-
-//    public String toString()
 }
