@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Courses {
     private HashMap<String, Double> courseMap;

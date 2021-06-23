@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -49,15 +47,12 @@ public class FindGradeFunctions {
         Student student = new Student();
         for (int i = 1; i < 7; i++) {
             System.out.printf("Enter grade[%d]: ", i);
-            double num = scan.nextDouble();
-            student.addGrade(num);
+            double grade = scan.nextDouble();
+            student.addGrade(grade);
         }
-        double sum = 0;
-        for (Double num : student.grades()) {
-            sum += num;
-        }
-        System.out.printf("\n-->Average: %.2f<--\n\n", sum / student.size());
-        student.clear();
+
+        System.out.printf("\n-->Average: %.2f<--\n\n", student.getGrade() / 6);
+        student.clearGrades();
     }
 
     public static void deleteItems() {
@@ -95,89 +90,36 @@ public class FindGradeFunctions {
         }
     }
 
-    public static void findClassAverageScore(ArrayList<Double> gradesArray) {
-        ArrayList<String> names = new ArrayList<>();
-        System.out.print("Continue with: My classroom[1] | New classroom[2]? ");
-        int answer = Integer.parseInt(scan.nextLine());
-        if (answer == 1) {
-            names = new ArrayList<>() {
-                {
-                    add("Panagiwths");
-                    add("Iakwvos");
-                    add("Spyros");
-                    add("Alex K");
-                    add("Alex N");
-                    add("Swthrhs");
-                    add("Periklhs");
-                }
-            };
-        } else if (answer == 2) {
-            System.out.print("How many students? ");
-            int numOfStudents = Integer.parseInt(scan.nextLine());
-            for (int i = 0; i < numOfStudents; i++) {
-                System.out.print("Student name: ");
-                names.add(scan.nextLine());
-            }
-        }
-        int numOfStudents = names.size();
-        int numOfCourses = 6;
-        double[][] courseGrades = new double[numOfCourses][numOfStudents];
+    public static void findClassAverageScore() {
+        Classroom classroom = new Classroom();
+
+        classroom.addStudent(new Student("Panagiwths"));
+        classroom.addStudent(new Student("Iakwvos"));
+//        student.addName("Spyros");
+//        student.addName("Alex K");
+//        student.addName("Alex N");
+//        student.addName("Swthrhs");
+//        student.addName("Periklhs");
+
+        int numOfStudents = classroom.size();
+        int numOfCourses = 3; // change to 6
 
         for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
-                System.out.printf("Course[%d], %s: ", i + 1, names.get(j));
+                System.out.printf("Course[%d], %s: ", i + 1, classroom.getStudentName(j));
+
                 double grade = Double.parseDouble(scan.nextLine());
-                courseGrades[i][j] = grade; //loop that populates 2d array
-                gradesArray.add(courseGrades[i][j]); // adds items to list
+                classroom.addGradeToStudent(classroom.getStudent(j), grade);
             }
         }
-        for (int i = 0; i < numOfStudents; i++) {
-            gradesArray.add(
-                            gradesArray.get(i)+
-                            gradesArray.get(i + numOfStudents) +
-                            gradesArray.get(i + numOfStudents * 2) +
-                            gradesArray.get(i + numOfStudents * 3) +
-                            gradesArray.get(i + numOfStudents * 4) +
-                            gradesArray.get(i + numOfStudents * 5)); // adds to
-            // every nth item
 
+        System.out.printf("\n-->Classroom average: %.2f<--\n\n", classroom.average());
+        int i = 1;
+        while (!(classroom.size() == 0)) {
+            System.out.println("["+ i+1 + "] " + classroom.returnBest());
+            i++;
         }
-        gradesArray.subList(0, numOfStudents * numOfCourses).clear(); //deletes old items in list
-
-        for (int i = 0; i < numOfStudents; i++) {
-            gradesArray.add(gradesArray.get(i) / numOfCourses); //adds modified numbers to list
-        }
-        gradesArray.subList(0, numOfStudents).clear(); //deletes old items in list
-
-        double sum = 0;
-        for (Double num : gradesArray) {
-            sum += num; // adds items of list to sum and then divides them to find the average
-        }
-        System.out.printf("\n-->Class average: %.2f<--\n\n", sum / gradesArray.size());
-
-        for (int i = 0; i < numOfStudents; i++) {
-            System.out.printf("%d. %s: \t %.2f\n", i + 1,
-                    names.get(gradesArray.indexOf(Collections.max(gradesArray))),
-                    Collections.max(gradesArray)); // finds the name with the max grade
-            names.remove(gradesArray.indexOf(Collections.max(gradesArray))); // deletes old name and grade and loops
-            // again to find max
-            gradesArray.remove(Collections.max(gradesArray));
-        }
-        System.out.println();
-    }
-
-    public static void logo() {
-        String logo1 =
-                "                                                                       \n" +
-                        " ███████╗██╗███╗   ██╗██████╗  ██████╗ ██████╗  █████╗ ██████╗ ███████╗\n" +
-                        " ██╔════╝██║████╗  ██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝\n" +
-                        " █████╗  ██║██╔██╗ ██║██║  ██║██║  ███╗██████╔╝███████║██║  ██║█████╗  \n" +
-                        " ██╔══╝  ██║██║╚██╗██║██║  ██║██║   ██║██╔══██╗██╔══██║██║  ██║██╔══╝  \n" +
-                        " ██║     ██║██║ ╚████║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝███████╗\n" +
-                        " ╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
-
-
-        System.out.println(logo1);
+        System.out.println("\n");
     }
 }

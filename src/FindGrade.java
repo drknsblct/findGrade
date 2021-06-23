@@ -8,8 +8,7 @@ public class FindGrade {
     public static void main(String[] args) {
 
         //Find class average score
-        ArrayList<Double> gradesArray = new ArrayList<>();
-        FindGradeFunctions.logo();
+//        FindGradeFunctions.logo();
 
         while (true) {
             System.out.println("[1] Add Courses\t\t" +
@@ -17,7 +16,7 @@ public class FindGrade {
                     "[2] View List\t\t" +
                     "[5] Delete Entries\n" +
                     "[3] Reset List\t\t" +
-                    "[6] Find Class Average\n" +
+                    "[6] Find Classroom Average\n" +
                     "[0] Exit\n");
             System.out.print("Enter number: ");
             int answer = scan.nextInt();
@@ -57,8 +56,8 @@ public class FindGrade {
                 FindGradeFunctions.deleteItems();
             }
             if (answer == 6) {
-                System.out.println("\n<<< Find Class Average Score >>>");
-                FindGradeFunctions.findClassAverageScore(gradesArray);
+                System.out.println("\n<<< Find Classroom Average Score >>>");
+                FindGradeFunctions.findClassAverageScore();
             }
         }
     }
