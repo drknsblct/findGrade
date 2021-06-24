@@ -1,3 +1,8 @@
+import Classes.Classroom;
+import Classes.Course;
+import Classes.Courses;
+import Classes.Student;
+
 import java.util.Scanner;
 
 
