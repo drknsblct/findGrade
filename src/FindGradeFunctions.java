@@ -1,7 +1,7 @@
-import Classes.Classroom;
-import Classes.Course;
-import Classes.Courses;
-import Classes.Student;
+import objClasses.Classroom;
+import objClasses.Course;
+import objClasses.Courses;
+import objClasses.Student;
 
 import java.util.Scanner;
 
