@@ -6,17 +6,24 @@ public class Student {
     public Student(String name) {
         this.name = name;
     }
+
     public Student() {
     }
 
-    public void addGrade(double grade){
+    public void addGrade(double grade) {
         this.grade += grade;
     }
 
     public double getGrade() {
         return grade;
     }
-    public void clearGrades(){
+
+    //could delete this function
+    public double getGradeDivSix() {
+        return grade / 6;
+    }
+
+    public void clearGrades() {
         grade = 0;
     }
 
@@ -26,6 +33,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("%s %.2f", name, grade);
+        //replace getGradeDivSix() with grade/6
+        return String.format("%s: \t %.2f", name, getGradeDivSix());
+
     }
 }

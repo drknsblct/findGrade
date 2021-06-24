@@ -19,7 +19,9 @@ public class Classroom {
     public double sumOfGrades(){
         double sum = 0;
         for (Student st: students) {
-            sum += st.getGrade();
+//            sum += st.getGrade()/6;
+            sum += st.getGradeDivSix();
+
         }
         return sum;
     }
@@ -38,10 +40,6 @@ public class Classroom {
     }
 
     public Student best() {
-        if(students.isEmpty()) {
-            return null;
-        }
-
         Student best = students.get(0);
         for (Student student : students) {
             if(student.getGrade() > best.getGrade()) {

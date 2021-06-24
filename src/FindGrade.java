@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -7,8 +6,8 @@ public class FindGrade {
 
     public static void main(String[] args) {
 
-        //Find class average score
-//        FindGradeFunctions.logo();
+
+        FindGradeFunctions.logo();
 
         while (true) {
             System.out.println("[1] Add Courses\t\t" +

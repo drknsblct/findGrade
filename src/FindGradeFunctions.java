@@ -92,23 +92,37 @@ public class FindGradeFunctions {
 
     public static void findClassAverageScore() {
         Classroom classroom = new Classroom();
+        int answer;
+        do {
+            System.out.print("Continue with: My classroom[1] | New classroom[2]? ");
+            answer = Integer.parseInt(scan.nextLine());
+        } while (answer != 1 && answer != 2);
 
-        classroom.addStudent(new Student("Panagiwths"));
-        classroom.addStudent(new Student("Iakwvos"));
-//        student.addName("Spyros");
-//        student.addName("Alex K");
-//        student.addName("Alex N");
-//        student.addName("Swthrhs");
-//        student.addName("Periklhs");
+
+        if (answer == 1) {
+            classroom.addStudent(new Student("Panagiwths"));
+            classroom.addStudent(new Student("Iakwvos"));
+            classroom.addStudent(new Student("Spyros"));
+            classroom.addStudent(new Student("Alex K"));
+            classroom.addStudent(new Student("Alex N"));
+            classroom.addStudent(new Student("Swthrhs"));
+            classroom.addStudent(new Student("Periklhs"));
+        } else {
+            System.out.print("How many students? ");
+            int loops = Integer.parseInt(scan.nextLine());
+            for (int i = 0; i < loops; i++) {
+                System.out.print("Student name: ");
+                classroom.addStudent(new Student(scan.nextLine()));
+            }
+        }
 
         int numOfStudents = classroom.size();
-        int numOfCourses = 3; // change to 6
+        int numOfCourses = 6;
 
         for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
                 System.out.printf("Course[%d], %s: ", i + 1, classroom.getStudentName(j));
-
                 double grade = Double.parseDouble(scan.nextLine());
                 classroom.addGradeToStudent(classroom.getStudent(j), grade);
             }
@@ -117,9 +131,24 @@ public class FindGradeFunctions {
         System.out.printf("\n-->Classroom average: %.2f<--\n\n", classroom.average());
         int i = 1;
         while (!(classroom.size() == 0)) {
-            System.out.println("["+ i+1 + "] " + classroom.returnBest());
+            System.out.println("[" + i + "] " + classroom.returnBest());
             i++;
         }
         System.out.println("\n");
     }
+
+    public static void logo() {
+        String logo =
+                "                                                                       \n" +
+                        " ███████╗██╗███╗   ██╗██████╗  ██████╗ ██████╗  █████╗ ██████╗ ███████╗\n" +
+                        " ██╔════╝██║████╗  ██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝\n" +
+                        " █████╗  ██║██╔██╗ ██║██║  ██║██║  ███╗██████╔╝███████║██║  ██║█████╗  \n" +
+                        " ██╔══╝  ██║██║╚██╗██║██║  ██║██║   ██║██╔══██╗██╔══██║██║  ██║██╔══╝  \n" +
+                        " ██║     ██║██║ ╚████║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝███████╗\n" +
+                        " ╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝\n";
+
+
+        System.out.println(logo);
+    }
 }
+
