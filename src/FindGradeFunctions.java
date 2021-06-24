@@ -105,7 +105,7 @@ public class FindGradeFunctions {
 
 
         if (answer == 1) {
-            classroom.addStudent(new Student("Panagiwths"));
+            classroom.addStudent(new Student("Panos"));
             classroom.addStudent(new Student("Iakwvos"));
             classroom.addStudent(new Student("Spyros"));
             classroom.addStudent(new Student("Alex K"));
@@ -127,7 +127,7 @@ public class FindGradeFunctions {
         for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
-                System.out.printf("Course[%d], %s: ", i + 1, classroom.getStudentName(j));
+                System.out.printf("Course[%d], %s:\t", i + 1, classroom.getStudentName(j));
                 double grade = Double.parseDouble(scan.nextLine());
                 classroom.addGradeToStudent(classroom.getStudent(j), grade);
             }
@@ -136,7 +136,7 @@ public class FindGradeFunctions {
         System.out.printf("\n-->Classroom average: %.2f<--\n\n", classroom.average());
         int i = 1;
         while (!(classroom.size() == 0)) {
-            System.out.println("[" + i + "] " + classroom.returnBest());
+            System.out.println(i + ". " + classroom.returnBest());
             i++;
         }
         System.out.println("\n");
