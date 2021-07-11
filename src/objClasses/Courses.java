@@ -18,17 +18,13 @@ public class Courses {
         return courseMap.size();
     }
 
-    public void printCourses() {
-        double sum = 0;
-
-        for (String name : courseMap.keySet()) {
+    public String returnCourses() {
+        courseMap.keySet().forEach(name -> {
             double value = courseMap.get(name);
             System.out.printf("%s: %.2f\n", name, value);
-        }
-        for (Double num : courseMap.values()) {
-            sum += num;
-        }
-        System.out.printf("\n-->Average: %.2f<--\n\n", sum / courseMap.size());
+        });
+        double sum = courseMap.values().stream().mapToDouble(num -> num).sum();
+        return String.format("\n-->Average: %.2f<--\n\n", sum / courseMap.size());
     }
 
     public boolean contains(String name) {

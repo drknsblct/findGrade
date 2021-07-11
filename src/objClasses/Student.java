@@ -20,11 +20,6 @@ public class Student {
         return grade;
     }
 
-    //could delete this function
-    public double getGradeDivSix() {
-        return grade / 6;
-    }
-
     public void clearGrades() {
         grade = 0;
     }
@@ -35,11 +30,7 @@ public class Student {
 
     @Override
     public String toString() {
-        //replace getGradeDivSix() with grade/6
-//        if(name.length() <= 5){
-//            return String.format("%s: \t\t %.2f", name, getGradeDivSix());
-//        }
-        return String.format("%s: \t %.2f", name, getGradeDivSix());
+        return String.format("%s: \t %.2f", name, grade / 6);
 
     }
 }

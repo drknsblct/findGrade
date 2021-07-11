@@ -1,6 +1,7 @@
 package objClasses;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Classroom {
     private ArrayList<Student> students;
@@ -10,24 +11,13 @@ public class Classroom {
         this.students = new ArrayList<>();
     }
 
-    public Student getStudent(int i){
+    public Student getStudent(int i) {
         return students.get(i);
     }
 
-    public String getStudentName(int i){
+    public String getStudentName(int i) {
         return students.get(i).getName();
     }
-
-    public double sumOfGrades(){
-        double sum = 0;
-        for (Student st: students) {
-//            sum += st.getGrade()/6;
-            sum += st.getGradeDivSix();
-
-        }
-        return sum;
-    }
-
 
     public void addStudent(Student name) {
         students.add(name);
@@ -42,22 +32,20 @@ public class Classroom {
     }
 
     public Student best() {
-        Student best = students.get(0);
-        for (Student student : students) {
-            if(student.getGrade() > best.getGrade()) {
-                best = student;
-            }
-        }
-        return best;
-    }
-    public Student returnBest() {
-        Student best = best();
+        //finds max student.getGrade() from students
+        Student best = students.stream()
+                .max(Comparator.comparing(Student::getGrade)).get();
         students.remove(best);
         return best;
+
     }
 
-    public double average(){
-        return sumOfGrades() / size();
+    public double average() {
+        //divides each value / 6 and then sums the total
+        return students.stream()
+                .mapToDouble(Student::getGrade)
+                .map(grade -> grade / 6)
+                .sum() / size();
     }
 }
 

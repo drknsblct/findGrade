@@ -2,7 +2,6 @@ import objClasses.Classroom;
 import objClasses.Course;
 import objClasses.Courses;
 import objClasses.Student;
-
 import java.util.Scanner;
 
 
@@ -12,7 +11,6 @@ public class FindGradeFunctions {
 
 
     public static void courses() {
-        Course course;
         System.out.print("Enter number of courses: ");
         int numOfCourses = Integer.parseInt(scan.nextLine());
         System.out.println();
@@ -22,14 +20,14 @@ public class FindGradeFunctions {
             System.out.print("Enter name of course (press enter to skip): ");
             String courseName = scan.nextLine();
 
-            if (courseName.equals("")) {
+            if (courseName.isEmpty()) {
                 courseName = String.format("Course[%d]", i + 1);
             }
             System.out.print("Enter number of CW: ");
             int numOfCW = Integer.parseInt(scan.nextLine());
 
             for (int j = 0; j < numOfCW; j++) {
-                System.out.printf("%s - CW[%d]\n", courseName, j + 1);
+                System.out.printf("\n%s - CW[%d]\n", courseName, j + 1);
                 System.out.print("Grade, Percent: ");
                 String[] input = scan.nextLine().split(",");
 
@@ -37,7 +35,7 @@ public class FindGradeFunctions {
                 double percent = Double.parseDouble(input[1]);
                 System.out.println();
 
-                course = new Course(grade, percent);
+                Course course = new Course(grade, percent);
                 sum += course.modifyGrade();
             }
             courses.addCourseAndGrade(courseName, sum);
@@ -45,7 +43,7 @@ public class FindGradeFunctions {
     }
 
     public static void printCourses() {
-        courses.printCourses();
+        System.out.println(courses.returnCourses());
     }
 
     public static void findStudentAverage() {
@@ -77,7 +75,8 @@ public class FindGradeFunctions {
 
             if (choice == 1) { // deletes list items based on course name
                 System.out.print("Enter course to remove: ");
-                String courseName = scan.nextLine().toLowerCase();
+                String courseName = scan.nextLine();
+
                 if (courses.contains(courseName)) {
                     System.out.println("Removed course: " + courseName);
                     System.out.println();
@@ -98,6 +97,7 @@ public class FindGradeFunctions {
     public static void findClassAverageScore() {
         Classroom classroom = new Classroom();
         int answer;
+
         do {
             System.out.print("Continue with: My classroom[1] | New classroom[2]? ");
             answer = Integer.parseInt(scan.nextLine());
@@ -136,7 +136,7 @@ public class FindGradeFunctions {
         System.out.printf("\n-->Classroom average: %.2f<--\n\n", classroom.average());
         int i = 1;
         while (!(classroom.size() == 0)) {
-            System.out.println(i + ". " + classroom.returnBest());
+            System.out.println(i + ". " + classroom.best());
             i++;
         }
         System.out.println("\n");
