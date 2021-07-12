@@ -2,6 +2,7 @@ import objClasses.Classroom;
 import objClasses.Course;
 import objClasses.Courses;
 import objClasses.Student;
+
 import java.util.Scanner;
 
 
@@ -33,6 +34,12 @@ public class FindGradeFunctions {
 
                 double grade = Double.parseDouble(input[0]);
                 double percent = Double.parseDouble(input[1]);
+
+                if (!((grade >= 0 && grade <= 100) && (percent >= 0 && percent <= 100))) {
+                    j--;
+                    continue;
+                }
+
                 System.out.println();
 
                 Course course = new Course(grade, percent);
@@ -51,6 +58,12 @@ public class FindGradeFunctions {
         for (int i = 1; i < 7; i++) {
             System.out.printf("Enter grade[%d]: ", i);
             double grade = scan.nextDouble();
+
+            if (!(grade >= 0 && grade <= 100)) {
+                i--;
+                continue;
+            }
+
             student.addGrade(grade);
         }
 
