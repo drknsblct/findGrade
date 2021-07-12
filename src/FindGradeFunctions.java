@@ -57,7 +57,7 @@ public class FindGradeFunctions {
         Student student = new Student();
         for (int i = 1; i < 7; i++) {
             System.out.printf("Enter grade[%d]: ", i);
-            double grade = scan.nextDouble();
+            double grade = Double.parseDouble(scan.nextLine());
 
             if (!(grade >= 0 && grade <= 100)) {
                 i--;

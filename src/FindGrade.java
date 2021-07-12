@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -9,7 +10,10 @@ public class FindGrade {
 
         FindGradeFunctions.logo();
 
+
         while (true) {
+            int answer;
+
             System.out.println("[1] Add Courses\t\t" +
                     "[4] Find Student Grade\n" +
                     "[2] View List\t\t" +
@@ -18,45 +22,62 @@ public class FindGrade {
                     "[6] Find Classroom Average\n" +
                     "[0] Exit\n");
             System.out.print("Enter number: ");
-            int answer = scan.nextInt();
-            if (answer == 0) {
-                System.out.println("Exiting program!\n");
-                break;
-            }
-            if (answer == 1) {
-                System.out.println("\n<<< Add Courses >>>");
-                FindGradeFunctions.courses();
-                FindGradeFunctions.printCourses();
-            }
-            if (answer == 2) {
-                System.out.println("\n<<< View List >>>");
-                if (FindGradeFunctions.courses.size() == 0) {
-                    System.out.println("The list is currently empty!\n");
-                    continue;
-                }
-                FindGradeFunctions.printCourses();
-            }
-            if (answer == 3) {
-                System.out.println("\n<<< Reset List >>>");
-                if (FindGradeFunctions.courses.size() == 0) {
-                    System.out.println("The list is currently empty!\n");
-                    continue;
-                }
-                FindGradeFunctions.courses.clear();
-                System.out.println("Emptied list!\n");
 
+            try {
+                answer = Integer.parseInt(scan.nextLine());
+            } catch (Exception e) { //NumberFormatException
+                System.out.println("Wrong value!\n");
+                continue;
             }
-            if (answer == 4) {
-                System.out.println("\n<<< Find Average Score >>>");
-                FindGradeFunctions.findStudentAverage();
-            }
-            if (answer == 5) {
-                System.out.println("\n<<< Delete Courses >>>");
-                FindGradeFunctions.deleteItems();
-            }
-            if (answer == 6) {
-                System.out.println("\n<<< Find Classroom Average Score >>>");
-                FindGradeFunctions.findClassAverageScore();
+
+
+            switch (answer) {
+                case 0:
+                    System.out.println("Exiting program!\n");
+                    break;
+
+                case 1:
+                    System.out.println("\n<<< Add Courses >>>");
+                    FindGradeFunctions.courses();
+                    FindGradeFunctions.printCourses();
+                    break;
+
+                case 2:
+                    System.out.println("\n<<< View List >>>");
+                    if (FindGradeFunctions.courses.size() == 0) {
+                        System.out.println("The list is currently empty!\n");
+                        continue;
+                    }
+                    FindGradeFunctions.printCourses();
+                    break;
+
+                case 3:
+                    System.out.println("\n<<< Reset List >>>");
+                    if (FindGradeFunctions.courses.size() == 0) {
+                        System.out.println("The list is currently empty!\n");
+                        continue;
+                    }
+                    FindGradeFunctions.courses.clear();
+                    System.out.println("Emptied list!\n");
+                    break;
+
+                case 4:
+                    System.out.println("\n<<< Find Average Score >>>");
+                    FindGradeFunctions.findStudentAverage();
+                    break;
+
+                case 5:
+                    System.out.println("\n<<< Delete Courses >>>");
+                    FindGradeFunctions.deleteItems();
+                    break;
+
+                case 6:
+                    System.out.println("\n<<< Find Classroom Average Score >>>");
+                    FindGradeFunctions.findClassAverageScore();
+                    break;
+
+                default:
+                    System.out.println("Input must be between 0 - 6\n");
             }
         }
     }
