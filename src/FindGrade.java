@@ -25,7 +25,7 @@ public class FindGrade {
 
             try {
                 answer = Integer.parseInt(scan.nextLine());
-            } catch (Exception e) { //NumberFormatException
+            } catch (Exception e) {
                 System.out.println("Wrong value!\n");
                 continue;
             }

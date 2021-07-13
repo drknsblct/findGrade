@@ -175,10 +175,10 @@ public class FindGradeFunctions {
                 loops = 11;
             }
             for (int i = 0; i < loops; i++) {
-                System.out.printf("Name[%d]: ", i+1);
+                System.out.printf("Name[%d]: ", i + 1);
                 String name = scan.nextLine();
-                if (name.equals("")){
-                    name = String.format("Student[%d]", i+1);
+                if (name.equals("")) {
+                    name = String.format("Student[%d]", i + 1);
                 }
                 classroom.addStudent(new Student(name));
 
@@ -194,7 +194,7 @@ public class FindGradeFunctions {
                 try {
                     System.out.printf("Course[%d], %s:\t", i + 1, classroom.getStudentName(j));
                     grade = Double.parseDouble(scan.nextLine());
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println();
                     j--;
                     continue;
