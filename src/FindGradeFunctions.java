@@ -101,6 +101,7 @@ public class FindGradeFunctions {
     }
 
     public static void deleteItems() {
+        int choice;
         while (true) {
             if (courses.size() == 0) {
                 System.out.println("The list is currently empty!\n");
@@ -108,7 +109,12 @@ public class FindGradeFunctions {
             }
             System.out.println("0. Exit || 1. Delete course || 2. Reset list");
             System.out.print("Choice: ");
-            int choice = Integer.parseInt(scan.nextLine());
+            try {
+                choice = Integer.parseInt(scan.nextLine());
+            } catch (Exception e) {
+                System.out.println();
+                continue;
+            }
 
             if (choice == 0) {
                 System.out.println();
@@ -138,11 +144,17 @@ public class FindGradeFunctions {
 
     public static void findClassAverageScore() {
         Classroom classroom = new Classroom();
-        int answer;
+        int answer = 0;
+        int loops;
+        double grade = 0;
 
         do {
-            System.out.print("Continue with: My classroom[1] | New classroom[2]? ");
-            answer = Integer.parseInt(scan.nextLine());
+            try {
+                System.out.print("Continue with: My classroom[1] | New classroom[2]? ");
+                answer = Integer.parseInt(scan.nextLine());
+            } catch (Exception e) {
+                System.out.println();
+            }
         } while (answer != 1 && answer != 2);
 
 
@@ -155,11 +167,21 @@ public class FindGradeFunctions {
             classroom.addStudent(new Student("Swthrhs"));
             classroom.addStudent(new Student("Periklhs"));
         } else {
-            System.out.print("How many students? ");
-            int loops = Integer.parseInt(scan.nextLine());
+            try {
+                System.out.print("How many students? ");
+                loops = Integer.parseInt(scan.nextLine());
+            } catch (Exception e) {
+                System.out.println("Setting default to 11\n");
+                loops = 11;
+            }
             for (int i = 0; i < loops; i++) {
-                System.out.print("Student name: ");
-                classroom.addStudent(new Student(scan.nextLine()));
+                System.out.printf("Name[%d]: ", i+1);
+                String name = scan.nextLine();
+                if (name.equals("")){
+                    name = String.format("Student[%d]", i+1);
+                }
+                classroom.addStudent(new Student(name));
+
             }
         }
 
@@ -169,8 +191,14 @@ public class FindGradeFunctions {
         for (int i = 0; i < numOfCourses; i++) {
             System.out.println();
             for (int j = 0; j < numOfStudents; j++) {
-                System.out.printf("Course[%d], %s:\t", i + 1, classroom.getStudentName(j));
-                double grade = Double.parseDouble(scan.nextLine());
+                try {
+                    System.out.printf("Course[%d], %s:\t", i + 1, classroom.getStudentName(j));
+                    grade = Double.parseDouble(scan.nextLine());
+                } catch (Exception e){
+                    System.out.println();
+                    j--;
+                    continue;
+                }
                 classroom.addGradeToStudent(classroom.getStudent(j), grade);
             }
         }
