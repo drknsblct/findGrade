@@ -18,12 +18,13 @@ public class FindGradeFunctions {
         double grade;
         double percent;
 
-        try {
-            System.out.print("Enter number of courses: ");
-            numOfCourses = Integer.parseInt(scan.nextLine());
-        } catch (Exception e) {
-            System.out.println("Setting to default of 1 course");
-            numOfCourses = 1;
+        while (true) {
+            try {
+                System.out.print("Enter number of courses: ");
+                numOfCourses = Integer.parseInt(scan.nextLine());
+                break;
+            } catch (Exception ignored) {
+            }
         }
         System.out.println();
 
@@ -35,12 +36,14 @@ public class FindGradeFunctions {
             if (courseName.isEmpty()) {
                 courseName = String.format("Course[%d]", i + 1);
             }
-            try {
-                System.out.print("Enter number of CW: ");
-                numOfCW = Integer.parseInt(scan.nextLine());
-            } catch (Exception e) {
-                System.out.println("Setting to default of 1 CW");
-                numOfCW = 1;
+
+            while (true) {
+                try {
+                    System.out.print("Enter number of CW: ");
+                    numOfCW = Integer.parseInt(scan.nextLine());
+                    break;
+                } catch (Exception ignored) {
+                }
             }
 
             for (int j = 0; j < numOfCW; j++) {
@@ -52,7 +55,7 @@ public class FindGradeFunctions {
                     grade = Double.parseDouble(input[0]);
                     percent = Double.parseDouble(input[1]);
                 } catch (Exception e) {
-                    System.out.println("Forgot comma between values!");
+                    System.out.println("Forgot comma or wrong values");
                     j--;
                     continue;
                 }
@@ -167,12 +170,13 @@ public class FindGradeFunctions {
             classroom.addStudent(new Student("Swthrhs"));
             classroom.addStudent(new Student("Periklhs"));
         } else {
-            try {
-                System.out.print("How many students? ");
-                loops = Integer.parseInt(scan.nextLine());
-            } catch (Exception e) {
-                System.out.println("Setting default to 11\n");
-                loops = 11;
+            while (true) {
+                try {
+                    System.out.print("How many students? ");
+                    loops = Integer.parseInt(scan.nextLine());
+                    break;
+                } catch (Exception ignored) {
+                }
             }
             for (int i = 0; i < loops; i++) {
                 System.out.printf("Name[%d]: ", i + 1);
@@ -181,7 +185,6 @@ public class FindGradeFunctions {
                     name = String.format("Student[%d]", i + 1);
                 }
                 classroom.addStudent(new Student(name));
-
             }
         }
 
