@@ -12,8 +12,19 @@ public class FindGradeFunctions {
 
 
     public static void courses() {
-        System.out.print("Enter number of courses: ");
-        int numOfCourses = Integer.parseInt(scan.nextLine());
+        int numOfCourses;
+        int numOfCW;
+        String[] input;
+        double grade;
+        double percent;
+
+        try {
+            System.out.print("Enter number of courses: ");
+            numOfCourses = Integer.parseInt(scan.nextLine());
+        } catch (Exception e) {
+            System.out.println("Setting to default of 1 course");
+            numOfCourses = 1;
+        }
         System.out.println();
 
         for (int i = 0; i < numOfCourses; i++) {
@@ -24,16 +35,27 @@ public class FindGradeFunctions {
             if (courseName.isEmpty()) {
                 courseName = String.format("Course[%d]", i + 1);
             }
-            System.out.print("Enter number of CW: ");
-            int numOfCW = Integer.parseInt(scan.nextLine());
+            try {
+                System.out.print("Enter number of CW: ");
+                numOfCW = Integer.parseInt(scan.nextLine());
+            } catch (Exception e){
+                System.out.println("Setting to default of 1 CW");
+                numOfCW = 1;
+            }
 
             for (int j = 0; j < numOfCW; j++) {
                 System.out.printf("\n%s - CW[%d]\n", courseName, j + 1);
                 System.out.print("Grade, Percent: ");
-                String[] input = scan.nextLine().split(",");
+                input = scan.nextLine().split(",");
 
-                double grade = Double.parseDouble(input[0]);
-                double percent = Double.parseDouble(input[1]);
+                try {
+                    grade = Double.parseDouble(input[0]);
+                    percent = Double.parseDouble(input[1]);
+                } catch (Exception e){
+                    System.out.println("Forgot comma between values!");
+                    j--;
+                    continue;
+                }
 
                 if (!((grade >= 0 && grade <= 100) && (percent >= 0 && percent <= 100))) {
                     j--;
