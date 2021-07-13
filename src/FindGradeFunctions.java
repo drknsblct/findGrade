@@ -38,7 +38,7 @@ public class FindGradeFunctions {
             try {
                 System.out.print("Enter number of CW: ");
                 numOfCW = Integer.parseInt(scan.nextLine());
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Setting to default of 1 CW");
                 numOfCW = 1;
             }
@@ -51,7 +51,7 @@ public class FindGradeFunctions {
                 try {
                     grade = Double.parseDouble(input[0]);
                     percent = Double.parseDouble(input[1]);
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println("Forgot comma between values!");
                     j--;
                     continue;
@@ -77,9 +77,16 @@ public class FindGradeFunctions {
 
     public static void findStudentAverage() {
         Student student = new Student();
+        double grade;
+
         for (int i = 1; i < 7; i++) {
-            System.out.printf("Enter grade[%d]: ", i);
-            double grade = Double.parseDouble(scan.nextLine());
+            try {
+                System.out.printf("Enter grade[%d]: ", i);
+                grade = Double.parseDouble(scan.nextLine());
+            } catch (Exception e) {
+                i--;
+                continue;
+            }
 
             if (!(grade >= 0 && grade <= 100)) {
                 i--;
