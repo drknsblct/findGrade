@@ -146,7 +146,7 @@ public class FindGradeFunctions {
         Classroom classroom = new Classroom();
         int answer = 0;
         int loops;
-        double grade = 0;
+        double grade;
 
         do {
             try {
