@@ -202,6 +202,10 @@ public class FindGradeFunctions {
                     j--;
                     continue;
                 }
+                if (!(grade >= 0 && grade <= 100)) {
+                    j--;
+                    continue;
+                }
                 classroom.addGradeToStudent(classroom.getStudent(j), grade);
             }
         }
