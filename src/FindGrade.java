@@ -34,7 +34,7 @@ public class FindGrade {
             switch (answer) {
                 case 0:
                     System.out.println("Exiting program!\n");
-                    break;
+                    System.exit(0);
 
                 case 1:
                     System.out.println("\n<<< Add Courses >>>");
